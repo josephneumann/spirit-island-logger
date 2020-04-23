@@ -1,0 +1,83 @@
+{% extends "game_base.html" %}
+{% block content %}
+    {{ super() }}
+    <div class="container mb-2">
+        <ul class="nav nav-light">
+            {% for e in game.expansions %}
+                {% if e.id != "base" %}
+                    <li class="badge badge-secondary m-1">{{ e.name.title() }}</li>
+                {% endif %}
+            {% endfor %}
+            {% if game.player_count > 1 %}
+                <li class="badge badge-secondary m-1">Multi</li>
+            {% else %}
+                <li class="badge badge-secondary m-1">Solo</li>
+            {% endif %}
+            {% if game.is_thematic %}
+                <li class="badge badge-secondary m-1">Thematic</li>
+            {% endif %}
+            <li class="badge badge-danger m-1">Difficulty: {{ game.difficulty }}</li>
+            <li class="badge badge-warning m-1">Handicap: {{ game.handicap }}</li>
+            {% if game.score %}
+                <li class="badge badge-success m-1">Score: {{ game.score }}</li>
+            {% endif %}
+
+            {% for s in game.spirits %}
+                <li class="badge badge-info m-1">{{ s.id.capitalize() }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="container">
+        <form action="" method="post"> {{ form.hidden_tag() }}
+            <div class="form-row">
+                <div class="col-sm-2 form-group">
+                    <label for="players">Players</label>
+                    {{ form.players(** {"class":"form-control","id":"players","placeholder":"Players"}) }}
+                </div>
+                <div class="col-sm-6 form-group">
+                    <label for="date">Date</label>
+                    {{ form.date(** {"class":"form-control","id":"date","placeholder":"Date"}) }}
+                </div>
+                <div class="col-sm-4 form-group">
+                    <label>Status</label>
+                    {{ form.status(** {"class":"form-control","id":"status"}) }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-sm-8 form-group">
+                    <label>Spirits</label>
+                    {{ form.spirits(** {"class":"form-control","id":"spirits"}) }}
+                </div>
+                <div class="col-sm-4 form-group">
+                    <label>Boards</label>
+                    {{ form.boards(** {"class":"form-control","id":"boards"}) }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 form-group">
+                    <label>Scenario</label>
+                    {{ form.scenario(** {"class":"form-control","id":"scenario"}) }}
+                </div>
+                <div class="col-md-6 form-group">
+                    <label>Adversary</label>
+                    {{ form.adversary(** {"class":"form-control","id":"adversary"}) }}
+                </div>
+            </div>
+            <div class="form-row mb-4">
+                <div class="col-md-4 input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Rating</span>
+                    </div>
+                    {{ form.rating(** {"class":"form-control","id":"rating","placeholder":"(0-10)"}) }}
+                </div>
+                <div class="col-md-8 input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Notes</span>
+                    </div>
+                    {{ form.notes(** {"class":"form-control","id":"notes","placeholder":"Thoughts about the game"}) }}
+                </div>
+            </div>
+            {{ form.update_game(** {"class":"btn btn-success btn-lg btn-block"}) }}
+        </form>
+    </div>
+{% endblock %}

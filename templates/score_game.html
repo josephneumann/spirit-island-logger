@@ -1,0 +1,41 @@
+{% extends "game_base.html" %}
+{% block content %}
+    {{ super() }}
+    <div class="container">
+        <form action="" method="post"> {{ form.hidden_tag() }}
+            <div class="form-row mb-1">
+                <div class="col-md-12 input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Outcome</span>
+                    </div>
+                    {{ form.outcome(** {"class":"form-control","id":"outcome"}) }}
+                </div>
+            </div>
+            <div class="form-row mb-1">
+                <div class="col-md-4 input-group mb-1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Invader Cards</span>
+                    </div>
+                    {{ form.invader_cards(** {"class":"form-control","id":"invaders","placeholder":"(0-12)"}) }}
+                    <small id="invaderHelp" class="form-text text-muted">Invader cards left face-down in
+                        the deck</small>
+                </div>
+                <div class="col-md-4 input-group mb-1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Dahan</span>
+                    </div>
+                    {{ form.dahan(** {"class":"form-control","id":"dahan","placeholder":"(0-25)"}) }}
+                    <small id="dahanHelp" class="form-text text-muted">The number of Dahan left on the board</small>
+                </div>
+                <div class="col-md-4 input-group mb-1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Blight</span>
+                    </div>
+                    {{ form.blight(** {"class":"form-control","id":"blight","placeholder":"(0-20)"}) }}
+                    <small id="dahanHelp" class="form-text text-muted">The number of Blight tokens on the board</small>
+                </div>
+            </div>
+            {{ form.score_game(** {"class":"btn btn-success btn-lg btn-block"}) }}
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block content %}
+    <main role="main" class="container">
+        <section class="jumbotron mb-3" style="padding-top:2rem">
+            <h3 class="jumbotron-heading text-center">Log New Game</h3>
+            <div class="container">
+                <form action="" method="post"> {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Players</span>
+                            {{ form.players(** {"type":"text","class":"form-control","id":"playerCount","placeholder":"Players","aria-describedby":"playerCountHelp"}) }}
+                        </div>
+                        <small id="playerCountHelp" class="form-text text-muted">Number of players for the game.</small>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Expansions</span>
+                            {{ form.expansions(** {"class":"form-control","id":"expansions","aria-describedby":"expansionsHelp","size":"3"}) }}
+                        </div>
+
+                        <small id="expansionsHelp" class="form-text text-muted">Which expansions to use for the
+                            game.</small>
+                    </div>
+                    {{ form.create_game(** {"class":"btn btn-primary btn-lg btn-block"}) }}
+                </form>
+            </div>
+        </section>
+        <div class="container">
+        <div class="text-center">
+            <h4>Game History</h4>
+        </div>
+            <table class="table">
+                <thead class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Players</th>
+                <th scope="col">Difficulty</th>
+                <th scope="col">Score</th>
+                <th scope="col">Actions</th>
+                </thead>
+                <tbody>
+                {% for game in games %}
+                    <tr class="text-center">
+                        <th scope="row">{{ game.id }}</th>
+                        <td>{{ game.date }}</td>
+                        <td><span
+                                class="badge {% if not game.is_complete %} badge-danger {% elif game.is_victory %} badge-success {% else %} badge-secondary {% endif %}"
+                                style="width: 7em">{{ game.status }}</span></td>
+                        <td>{{ game.player_count }}</td>
+                        <td>{{ game.difficulty }}</td>
+                        {% if game.score %}
+                            <td>{{ game.score }}</td>
+                        {% else %}
+                            <td><a class="btn btn-sm btn-outline-secondary" style="width: 5em"
+                                   href="{{ url_for('score_game', game_id=game.id) }}">Score</a></td>
+                        {% endif %}
+                        <td>
+                            <div class="btn-group" role="group" aria-label="gameActions">
+                                <a href="{{ url_for('edit_game', game_id = game.id) }} ">
+                                    <button class="btn btn-outline-secondary btn-sm mr-2" style="width: 5em">Edit
+                                    </button>
+                                </a>
+                                <a href="{{ url_for('delete_game', game_id = game.id) }} ">
+                                    <button class="btn btn-outline-danger btn-sm" style="width: 5em">Delete</button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+{% endblock %}

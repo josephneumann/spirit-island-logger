@@ -1,0 +1,511 @@
+{
+  "base": {
+    "name": "Spirit Island",
+    "spirits": {
+      "lightning": {
+        "name": "Lightning's Swift Strike",
+        "complexity": 1,
+        "powers": {
+          "offense": 10,
+          "control": 4,
+          "fear": 6,
+          "defense": 2,
+          "utility": 4
+        },
+        "setup": "Put 2 presence on your starting board in the highest-numbered Sands."
+      },
+      "river": {
+        "name": "River Surges in Sunlight",
+        "complexity": 1,
+        "setup": "Put 1 presence on your starting board in the highest-numbered Wetlands.",
+        "powers": {
+          "offense": 8,
+          "control": 10,
+          "fear": 2,
+          "defense": 2,
+          "utility": 8
+        }
+      },
+      "vital-strength": {
+        "name": "Vital Strength of the Earth",
+        "complexity": 1,
+        "powers": {
+          "offense": 2,
+          "control": 6,
+          "fear": 2,
+          "defense": 10,
+          "utility": 6
+        },
+        "setup": "Put 3 presence on your starting board: 2 in the highest-numbered Mountain, 1 in the highest-numbered Jungle."
+      },
+      "shadows": {
+        "name": "Shadows Flicker Like Flame",
+        "complexity": 1,
+        "powers": {
+          "offense": 8,
+          "control": 6,
+          "fear": 10,
+          "defense": 2,
+          "utility": 2
+        },
+        "setup": "Put 3 presence on your starting board: 2 in the highest-numbered Jungle and 1 in land #5"
+      },
+      "thunderspeaker": {
+        "name": "Thunderspeaker",
+        "complexity": 2,
+        "powers": {
+          "offense": 8,
+          "control": 10,
+          "fear": 6,
+          "defense": 4,
+          "utility": 2
+        },
+        "setup": "Put 2 presence on your starting board: 1 in each of the 2 lands with the most Dahan."
+      },
+      "rampant": {
+        "name": "A Spread of Rampant Green",
+        "complexity": 2,
+        "powers": {
+          "offense": 8,
+          "control": 6,
+          "fear": 4,
+          "defense": 10,
+          "utility": 8
+        },
+        "setup": "Put 2 Presence on your starting board; 1 in the highest-numbered Wetland, and 1 in the Jungle without any Dahan. (If there is more than 1 such Jungle, you may choose)"
+      },
+      "bringer": {
+        "name": "Bringer of Dreams and Nightmares",
+        "complexity": 3,
+        "powers": {
+          "offense": 2,
+          "control": 4,
+          "fear": 10,
+          "defense": 4,
+          "utility": 4
+        },
+        "setup": "Put 2 Presence on your starting board in the highest-numbered Sands."
+      },
+      "ocean": {
+        "name": "Ocean's Hungry Grasp",
+        "complexity": 3,
+        "powers": {
+          "offense": 10,
+          "control": 8,
+          "fear": 8,
+          "defense": 6,
+          "utility": 4
+        },
+        "setup": "Put 2 presence onto your starting board: 1 in the Ocean, and 1 in a Coastal land of your choice."
+      }
+    },
+    "blight-cards": 2,
+    "scenarios": {
+      "guard-isles-heart": {
+        "name": "Guard the Isle's Heart",
+        "difficulty": 0,
+        "spirit-handicaps": {
+          "rampant": -1,
+          "bringer": 1
+        },
+        "adversary-handicaps": {
+          "brandenburg-prussia": 1
+        }
+      },
+      "blitz": {
+        "name": "Blitz",
+        "difficulty": 0,
+        "spirit-handicaps": {
+          "keeper": 1,
+          "vital-strength": 1,
+          "serpent": 1
+        },
+        "adversary-handicaps": {
+          "brandenburg-prussia": 1
+        }
+      },
+      "rituals-terror": {
+        "name": "Rituals of Terror",
+        "difficulty": 3,
+        "spirit-handicaps": {
+          "thunderspeaker": -1,
+          "rampant": 1,
+          "serpent": 1,
+          "river": 1
+        },
+        "adversary-handicaps": {}
+      },
+      "dahan-insurrection": {
+        "name": "Dahan Insurrection",
+        "difficulty": 4,
+        "spirit-handicaps": {
+          "thunderspeaker": -1,
+          "river": -1
+        },
+        "adversary-handicaps": {
+          "england": 1
+        }
+      }
+    },
+    "adversaries": {
+      "england": {
+        "name": "The Kingdom of England",
+        "additional-loss-condition": "Proud & Mighty Capital: If 7 or more towns/cities are ever in a single land, the Invaders win",
+        "escalation": "Building Boom:  on each board with towns/cities, build in the land with the most towns/cities.",
+        "spirit-handicaps": {
+          "lightning": -1,
+          "keeper": -1,
+          "thunderspeaker": -1,
+          "wildfire": -1,
+          "shadows": 1,
+          "river": 1
+        },
+        "levels": [
+          {
+            "difficulty": 1,
+            "level-one-fear": 3,
+            "level-two-fear": 3,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 3,
+            "level-one-fear": 3,
+            "level-two-fear": 4,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 4,
+            "level-one-fear": 4,
+            "level-two-fear": 4,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 6,
+            "level-one-fear": 4,
+            "level-two-fear": 5,
+            "level-three-fear": 4
+          },
+          {
+            "difficulty": 7,
+            "level-one-fear": 4,
+            "level-two-fear": 5,
+            "level-three-fear": 5
+          },
+          {
+            "difficulty": 9,
+            "level-one-fear": 4,
+            "level-two-fear": 5,
+            "level-three-fear": 5
+          },
+          {
+            "difficulty": 10,
+            "level-one-fear": 4,
+            "level-two-fear": 5,
+            "level-three-fear": 4
+          }
+        ]
+      },
+      "brandenburg-prussia": {
+        "name": "The Kingdom of Brandenburg-Prussia",
+        "additional-loss-condition": "",
+        "escalation": "Land Rush: On each board with cities/towns, add 1 town to a land without towns.",
+        "spirit-handicaps": {
+          "keeper": 1,
+          "vital-strength": 1,
+          "serpent": 1
+        },
+        "levels": [
+          {
+            "difficulty": 1,
+            "level-one-fear": 3,
+            "level-two-fear": 3,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 2,
+            "level-one-fear": 3,
+            "level-two-fear": 3,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 4,
+            "level-one-fear": 3,
+            "level-two-fear": 3,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 6,
+            "level-one-fear": 3,
+            "level-two-fear": 4,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 7,
+            "level-one-fear": 4,
+            "level-two-fear": 4,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 9,
+            "level-one-fear": 4,
+            "level-two-fear": 4,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 10,
+            "level-one-fear": 4,
+            "level-two-fear": 4,
+            "level-three-fear": 4
+          }
+        ]
+      },
+      "sweden": {
+        "name": "The Kingdom of Sweden",
+        "additional-loss-condition": "",
+        "escalation": "Swayed by the Invaders:  After Invaders Explore into each land this Phase, if that land has at least as many Invaders and Dahan, replace 1 Dahan with 1 town.",
+        "spirit-handicaps": {
+          "rampant": -1,
+          "vital-strength": -1
+        },
+        "levels": [
+          {
+            "difficulty": 1,
+            "level-one-fear": 3,
+            "level-two-fear": 3,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 2,
+            "level-one-fear": 3,
+            "level-two-fear": 3,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 3,
+            "level-one-fear": 3,
+            "level-two-fear": 4,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 5,
+            "level-one-fear": 3,
+            "level-two-fear": 4,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 6,
+            "level-one-fear": 3,
+            "level-two-fear": 4,
+            "level-three-fear": 4
+          },
+          {
+            "difficulty": 7,
+            "level-one-fear": 4,
+            "level-two-fear": 4,
+            "level-three-fear": 4
+          },
+          {
+            "difficulty": 8,
+            "level-one-fear": 4,
+            "level-two-fear": 4,
+            "level-three-fear": 5
+          }
+        ]
+      }
+    },
+    "boards": {
+      "A": {
+        "thematic": false
+      },
+      "B": {
+        "thematic": false
+      },
+      "C": {
+        "thematic": false
+      },
+      "D": {
+        "thematic": false
+      },
+      "NE": {
+        "thematic": true
+      },
+      "NW": {
+        "thematic": true
+      },
+      "E": {
+        "thematic": true
+      },
+      "W": {
+        "thematic": true
+      }
+    }
+  },
+  "promo-1": {
+    "name": "Promo Pack #1",
+    "blight-cards": 0,
+    "spirits": {
+      "wildfire": {
+        "name": "Heart of the Wildfire",
+        "complexity": 3,
+        "powers": {
+          "offense": 10,
+          "control": 6,
+          "fear": 8,
+          "defense": 2,
+          "utility": 4
+        },
+        "setup": "Put 3 presence and 2 Blight on your starting board in the highest-numbered Sands. (Blight comes from the box, not the Blight Card)"
+      },
+      "serpent": {
+        "name": "Serpent Slumbering Beneath the Island",
+        "complexity": 3,
+        "powers": {
+          "offense": 4,
+          "control": 4,
+          "fear": 4,
+          "defense": 8,
+          "utility": 10
+        },
+        "setup": "Put 1 presence on your starting board in the land #5."
+      }
+    },
+    "adversaries": {},
+    "scenarios": {},
+    "boards": {}
+  },
+  "branch-and-claw": {
+    "name": "Branch & Claw",
+    "spirits": {
+      "sharp-fangs": {
+        "name": "Sharp Fangs Behind the Leaves",
+        "complexity": 2,
+        "powers": {
+          "offense": 6,
+          "control": 6,
+          "fear": 8,
+          "defense": 4,
+          "utility": 2
+        },
+        "setup": "Put 1 presence and 1 beast on your starting board in the highest-numbered Jungle. Put 1 presence in a land of your choice with beast anywhere on the island."
+      },
+      "keeper": {
+        "name": "Keeper of the Forbidden Wilds",
+        "complexity": 2,
+        "powers": {
+          "offense": 10,
+          "control": 4,
+          "fear": 2,
+          "defense": 8,
+          "utility": 6
+        },
+        "setup": "Put 1 presence and 1 wild on your starting board in the highest-numbered Jungle."
+      }
+    },
+    "blight-cards": 7,
+    "scenarios": {
+      "powers-long-forgotten": {
+        "name": "Powers Long Forgotten",
+        "difficulty": 1,
+        "spirit-handicaps": {
+          "thunderspeaker": -1
+        },
+        "adversary-handicaps": {}
+      },
+      "rituals-destroying-flame": {
+        "name": "Rituals of the Destroying Flame",
+        "difficulty": 3,
+        "spirit-handicaps": {
+          "keeper": -1,
+          "lightning": 1,
+          "sharp-fangs": 1
+        },
+        "adversary-handicaps": {}
+      },
+      "second-wave": {
+        "name": "Second Wave",
+        "difficulty": 0,
+        "spirit-handicaps": {},
+        "adversary-handicaps": {
+          "france": 1
+        }
+      },
+      "ward-the-shores": {
+        "name": "Ward the Shores",
+        "difficulty": 2,
+        "spirit-handicaps": {
+          "ocean": -1
+        },
+        "adversary-handicaps": {
+          "brandenburg-prussia": 1
+        }
+      }
+    },
+    "adversaries": {
+      "france": {
+        "name": "The Kingdom of France (Plantation Colony)",
+        "additional-loss-condition": "Sprawling Plantations: Before Setup, return all but 7 towns per player in the box.  Invaders win if you ever cannot place a town.",
+        "escalation": "Demand for New Cash Crops:  After Exploring on each board, pick a land of the shown terrain.  If it has towns/cities, add 1 Blight. Otherwise, add 1 town.",
+        "spirit-handicaps": {
+          "lightning": -1,
+          "keeper": -1,
+          "thunderspeaker": -1,
+          "wildfire": -1,
+          "shadows": 1,
+          "bringer": 1
+        },
+        "levels": [
+          {
+            "difficulty": 2,
+            "level-one-fear": 3,
+            "level-two-fear": 3,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 3,
+            "level-one-fear": 3,
+            "level-two-fear": 3,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 5,
+            "level-one-fear": 4,
+            "level-two-fear": 4,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 7,
+            "level-one-fear": 4,
+            "level-two-fear": 4,
+            "level-three-fear": 3
+          },
+          {
+            "difficulty": 8,
+            "level-one-fear": 4,
+            "level-two-fear": 4,
+            "level-three-fear": 4
+          },
+          {
+            "difficulty": 9,
+            "level-one-fear": 4,
+            "level-two-fear": 5,
+            "level-three-fear": 4
+          },
+          {
+            "difficulty": 10,
+            "level-one-fear": 4,
+            "level-two-fear": 5,
+            "level-three-fear": 5
+          }
+        ]
+      }
+    }
+  },
+  "jagged-earth": {
+    "name": "Jagged Earth",
+    "blight-cards": 0,
+    "spirits": {},
+    "adversaries": {},
+    "scenarios": {},
+    "boards": {}
+  }
+}

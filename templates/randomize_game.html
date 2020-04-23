@@ -1,0 +1,61 @@
+{% extends "game_base.html" %}
+{% block content %}
+    {{ super() }}
+    <div class="container">
+        <form action="" method="post"> {{ form.hidden_tag() }}
+            <div class="form-row mb-2">
+                <div class="col-md-3 form-group">
+                    <div class="form-check">
+                        {{ form.use_thematic_boards(** {"class":"form-check-input","id":"thematic", "type":"checkbox"}) }}
+                        <label>Use Thematic Boards</label>
+                        <small id="adversaryHelp" class="form-text text-muted">If not selected, the standard boards will be used instead</small>
+                    </div>
+                </div>
+                <div class="col-md-3 form-group">
+                    <div class="form-check">
+                        {{ form.force(** {"class":"form-check-input","id":"force", "type":"checkbox"}) }}
+                        <label>Force Overwrite</label>
+                        <small id="forceHelp" class="form-text text-muted">If selected, will overwrite existing game
+                            selections</small>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label> Max Spirit Complexity</label>
+                    {{ form.spirit_max_complexity(** {"class":"form-control","id":"spiritComplexity"}) }}
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            {{ form.use_scenario(** {"type":"checkbox"}) }}
+                        </div>
+                    </div>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            Scenario (Max Difficulty)
+                        </div>
+                    </div>
+                    {{ form.scenario_max_difficulty(** {"class":"form-control","id":"scenarioDifficulty"} ) }}
+                    <small id="scenarioHelp" class="form-text text-muted">If scenario is desired, select checkbox and
+                        maximum desired difficulty level</small>
+                </div>
+                <div class="col-md-6 input-group mb-3">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            {{ form.use_adversary(** {"type":"checkbox"}) }}
+                        </div>
+                    </div>
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            Adversary (Max Difficulty)
+                        </div>
+                    </div>
+                    {{ form.adversary_max_difficulty(** {"class":"form-control","id":"adversaryDifficulty"} ) }}
+                    <small id="adversaryHelp" class="form-text text-muted">If adversary is desired, select checkbox and maximum desired difficulty level</small>
+                </div>
+            </div>
+            <p>{{ form.randomize(** {"class":"btn btn-success btn-lg btn-block"}) }}</p>
+        </form>
+    </div>
+{% endblock %}
