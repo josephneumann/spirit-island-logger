@@ -3,33 +3,32 @@ An open-source game-logger and randomizer utility for the tabletop game [*Spirit
 
 # Feature Overview
 
-
-##Data
+## Data
 Python data model describing *Spirit Island* gameplay, implemented with the SQLAlchemy ORM.  By default game configuration data and gameplay results will be persisted in a [SQLite](https://www.sqlite.org/index.html), unless an alternative db connection is defined.
 ![erd]
 
 
-##Utilities
+## Utilities
 Utilities to randomly configure new games based on user-defined preferences such as: expansions to use, spirit complexity, adversary and scenario difficulty etc.
 Utilities to calculate the score of completed *Spirit Island* games.
 
 
-##Web App
+## Web App
 A [Flask](https://flask.palletsprojects.com/en/1.1.x/) web-app for interacting with the data. You can use this tool to
 track gameplay, randomize games and score them.
 
-Game History / Home Page
+### Game History / Home Page
 ![index]
 
 
-Game Editor
+### Game Editor
 ![edit_game]
 
 
-Game Randomizer
+### Game Randomizer
 ![randomize_game]
 
-Game Scorer
+### Game Scorer
 ![score_game]
 
 
