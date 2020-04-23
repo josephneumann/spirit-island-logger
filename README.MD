@@ -35,7 +35,7 @@ track gameplay, randomize games and score them.
 ## Installation and Configuration
 Clone this repository to your machine
 ```bash
-git clone https://github.com/{thisrepo}
+git@github.com:josephneumann/spirit-island-logger.git
 ```
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install package dependencies.
 
