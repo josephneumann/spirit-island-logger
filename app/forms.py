@@ -26,13 +26,6 @@ from wtforms.validators import DataRequired, NumberRange, Optional
 
 
 class CreateGameForm(FlaskForm):
-    # players = IntegerField(
-    #     "Players",
-    #     validators=[
-    #         DataRequired(),
-    #         NumberRange(min=1, max=4, message="Must be 1-4 players"),
-    #     ],
-    # )
     players = SelectField("Players", validators=[DataRequired()])
     expansions = SelectMultipleField("Expansions")
     create_game = SubmitField("Create Game")
