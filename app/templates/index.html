@@ -27,11 +27,12 @@
         </section>
         <div class="container">
         <div class="text-center">
-            <h4>Game History</h4>
+            <h4>Latest Games</h4>
         </div>
+        {% block game_table %}
             <table class="table">
                 <thead class="text-center">
-                <th scope="col">#</th>
+{#                <th scope="col">#</th>#}
                 <th scope="col">Date</th>
                 <th scope="col">Status</th>
                 <th scope="col">Players</th>
@@ -42,7 +43,7 @@
                 <tbody>
                 {% for game in games %}
                     <tr class="text-center">
-                        <th scope="row">{{ game.id }}</th>
+{#                        <th scope="row">{{ game.id }}</th>#}
                         <td>{{ game.date }}</td>
                         <td><span
                                 class="badge {% if not game.is_complete %} badge-danger {% elif game.is_victory %} badge-success {% else %} badge-secondary {% endif %}"
@@ -70,6 +71,7 @@
                 {% endfor %}
                 </tbody>
             </table>
+        {% endblock %}
         </div>
     </main>
 {% endblock %}
