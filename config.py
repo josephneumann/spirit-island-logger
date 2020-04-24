@@ -11,4 +11,3 @@ class Config(object):
         "DATABASE_URL"
     ) or "sqlite:///" + os.path.join(basedir, "app.db")
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    TEMPLATE_DIR = os.path.join(basedir, "templates")
