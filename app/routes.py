@@ -10,12 +10,24 @@ from app import app, db
 from flask import render_template, url_for, redirect, request, flash
 from app.models import Game, Spirit, Board, AdversaryLevel, Scenario, Expansion
 from app.forms import CreateGameForm, EditGameForm, ScoreGameForm, RandomizeGameForm
+import itertools
+
+
+def chunked_iterable(iterable, size):
+    it = iter(iterable)
+    while True:
+        chunk = tuple(itertools.islice(it, size))
+        if not chunk:
+            break
+        yield chunk
 
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/index", methods=["GET", "POST"])
 def index():
-    games = Game.query.order_by(Game.date.desc()).limit(5)  # Only Retrieve Latest 5 Games
+    games = Game.query.order_by(Game.date.desc()).limit(
+        5
+    )  # Only Retrieve Latest 5 Games
     form = CreateGameForm()
     form.expansions.choices = [
         (e.id, e.name) for e in Expansion.query.filter(Expansion.id != "base").all()
@@ -37,7 +49,13 @@ def index():
 @app.route("/games")
 def games():
     games = Game.query.order_by(Game.id.desc()).all()
-    return render_template("games.html", title="Home", games=games)
+    return render_template("games.html", title="Games", games=games)
+
+
+@app.route("/spirits")
+def spirits():
+    spirits = chunked_iterable(Spirit.query.order_by(Spirit.name).all(), 3)  # This is a generator
+    return render_template("spirits.html", title="Spirits", chunked_spirits=spirits)
 
 
 @app.route("/game/<game_id>/edit", methods=["GET", "POST"])
@@ -201,4 +219,6 @@ def randomize_game(game_id):
         form.adversary_max_difficulty.data = "10"
     for error in form.errors:
         flash("{}: {}".format(error.capitalize(), form.errors[error][0]), "danger")
-    return render_template("randomize_game.html", game=gm, form=form)
+    return render_template(
+        "randomize_game.html", title="Randomize Game", game=gm, form=form
+    )

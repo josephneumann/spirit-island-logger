@@ -55,6 +55,33 @@ class Spirit(db.Model):
     def __repr__(self):
         return "<Spirit> : {}".format(self.name)
 
+    def get_complexity(self):
+        if self.complexity == 1:
+            return "Low"
+        elif self.complexity == 2:
+            return "Moderate"
+        elif self.complexity == 3:
+            return "High"
+        return "Unknown"
+
+    def get_game_wins(self) -> int:
+        """Get count of games this spirit has won"""
+        return (
+            Game.query.filter(Game.spirits.any(id=self.id))
+            .filter(Game.is_complete)
+            .filter(Game.is_victory)
+            .count()
+        )
+
+    def get_game_losses(self):
+        """Get count of games this spirit has lost"""
+        return (
+            Game.query.filter(Game.spirits.any(id=self.id))
+            .filter(Game.is_complete)
+            .filter(~Game.is_victory)
+            .count()
+        )
+
 
 class Adversary(db.Model):
     __tablename__ = "adversary"

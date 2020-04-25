@@ -29,6 +29,9 @@
                 <li class="nav-item {% if request.endpoint == 'games' %}active{% else %}{% endif %}">
                     <a class="nav-link" href="{{ url_for('games') }}">Game History</a>
                 </li>
+                <li class="nav-item {% if request.endpoint == 'spirits' %}active{% else %}{% endif %}">
+                    <a class="nav-link" href="{{ url_for('spirits') }}">Spirits</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -54,7 +57,7 @@
     <footer class="footer font-small bg-light">
         <div class="text-center">Copyright &copy;
             <script>document.write(new Date().getFullYear())</script>
-            Joseph Neumann; All Rights Reserved
+            Joseph Neumann
         </div>
     </footer>
 {% endblock %}

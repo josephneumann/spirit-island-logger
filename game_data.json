@@ -97,6 +97,30 @@
           "utility": 4
         },
         "setup": "Put 2 presence onto your starting board: 1 in the Ocean, and 1 in a Coastal land of your choice."
+      },
+      "wildfire": {
+        "name": "Heart of the Wildfire",
+        "complexity": 3,
+        "powers": {
+          "offense": 10,
+          "control": 6,
+          "fear": 8,
+          "defense": 2,
+          "utility": 4
+        },
+        "setup": "Put 3 presence and 2 Blight on your starting board in the highest-numbered Sands. (Blight comes from the box, not the Blight Card)"
+      },
+      "serpent": {
+        "name": "Serpent Slumbering Beneath the Island",
+        "complexity": 3,
+        "powers": {
+          "offense": 4,
+          "control": 4,
+          "fear": 4,
+          "defense": 8,
+          "utility": 10
+        },
+        "setup": "Put 1 presence on your starting board in the land #5."
       }
     },
     "blight-cards": 2,
@@ -340,39 +364,6 @@
       }
     }
   },
-  "promo-1": {
-    "name": "Promo Pack #1",
-    "blight-cards": 0,
-    "spirits": {
-      "wildfire": {
-        "name": "Heart of the Wildfire",
-        "complexity": 3,
-        "powers": {
-          "offense": 10,
-          "control": 6,
-          "fear": 8,
-          "defense": 2,
-          "utility": 4
-        },
-        "setup": "Put 3 presence and 2 Blight on your starting board in the highest-numbered Sands. (Blight comes from the box, not the Blight Card)"
-      },
-      "serpent": {
-        "name": "Serpent Slumbering Beneath the Island",
-        "complexity": 3,
-        "powers": {
-          "offense": 4,
-          "control": 4,
-          "fear": 4,
-          "defense": 8,
-          "utility": 10
-        },
-        "setup": "Put 1 presence on your starting board in the land #5."
-      }
-    },
-    "adversaries": {},
-    "scenarios": {},
-    "boards": {}
-  },
   "branch-and-claw": {
     "name": "Branch & Claw",
     "spirits": {
@@ -503,9 +494,167 @@
   "jagged-earth": {
     "name": "Jagged Earth",
     "blight-cards": 0,
-    "spirits": {},
+    "spirits": {
+      "downpour": {
+        "name": "Downpour Drenches the World",
+        "complexity": 3,
+        "powers": {
+          "offense": 4,
+          "control": 6,
+          "fear": 2,
+          "defense": 10,
+          "utility": 6
+        },
+        "setup": "Put 1 Presence on your starting board in the lowest-numbered Wetlands."
+      },
+      "finder": {
+        "name": "Finder of Paths Unseen",
+        "complexity": 3,
+        "powers": {
+          "offense": 2,
+          "control": 10,
+          "fear": 2,
+          "defense": 6,
+          "utility": 6
+        },
+        "setup": "Put 2 Presence on your starting board: 1 in land #3; 1 in the highest-numbered land. Note that you have 6 Unique Power Cards."
+      },
+      "fractured-days": {
+        "name": "Fractured Days Split the Sky",
+        "complexity": 3,
+        "powers": {
+          "offense": null,
+          "control": null,
+          "fear": null,
+          "defense": null,
+          "utility": null
+        },
+        "setup": "Put 3 Presence on your starting board: 1 in the highest-numbered land with 1 Dahan, and 2 in the highest-numbered land without Dahan. Discard the top 3 cards of the Minor Power and Major Power decks."
+      },
+      "grinning-trickster": {
+        "name": "Grinning Trickster Stirs Up Trouble",
+        "complexity": 2,
+        "powers": {
+          "offense": 6,
+          "control": 6,
+          "fear": 6,
+          "defense": 6,
+          "utility": 2
+        },
+        "setup": "Put 2 Presence on your starting board: 1 in the highest-numbered land with Dahan, and 1 in land #4."
+      },
+      "lure": {
+        "name": "Lure of the Deep Wilderness",
+        "complexity": 2,
+        "powers": {
+          "offense": 8,
+          "control": 8,
+          "fear": 8,
+          "defense": 4,
+          "utility": 2
+        },
+        "setup": "Put 3 Presence on your starting board: 2 in land #8, and 1 in land #7. Add 1 Beast to land #8."
+      },
+      "many-minds": {
+        "name": "Many Minds Move as One",
+        "complexity": 2,
+        "powers": {
+          "offense": 2,
+          "control": 10,
+          "fear": 10,
+          "defense": 10,
+          "utility": 2
+        },
+        "setup": "Put 1 Presence on your starting board in a land with Beast. Note that you have 5 Unique Power Cards."
+      },
+      "shifting-memory": {
+        "name": "Shifting Memory of Ages",
+        "complexity": 2,
+        "powers": {
+          "offense": 3,
+          "control": 4,
+          "fear": 4,
+          "defense": 8,
+          "utility": 10
+        },
+        "setup": "Put 2 Presence on your starting board in the highest-numbered land that is Sands or Mountain. Get out the Element Markers. Prepare 1 Moon, 1 Air, 1 Earth Element marker (put them by your Special Rules)."
+      },
+      "shroud": {
+        "name": "Shroud of Silent mist",
+        "complexity": 3,
+        "powers": {
+          "offense": 8,
+          "control": 8,
+          "fear": 10,
+          "defense": 4,
+          "utility": 2
+        },
+        "setup": "Put 2 Presence on your starting board: 1 in the highest-numbered Wetland and 1 in the highest-numbered Mountain."
+      },
+      "starlight": {
+        "name": "Starlight Seeks Its Form",
+        "complexity": 3,
+        "powers": {
+          "offense": null,
+          "control": null,
+          "fear": null,
+          "defense": null,
+          "utility": null
+        },
+        "setup": "Put 1 Presence on your starting board, in a land with Blight."
+      },
+      "stone": {
+        "name": "Stone's Unyielding Defiance",
+        "complexity": 2,
+        "powers": {
+          "offense": 8,
+          "control": 4,
+          "fear": 2,
+          "defense": 10,
+          "utility": 4
+        },
+        "setup": "Put 2 Presence on your starting board: 1 in the lowest-numbered Mountain without Dahan; 1 in an adjacent land that has Blight (if possible) or is Sands (if not)."
+      },
+      "vengeance": {
+        "name": "Vengeance as a Burning Plague",
+        "complexity": 3,
+        "powers": {
+          "offense": null,
+          "control": null,
+          "fear": null,
+          "defense": null,
+          "utility": null
+        },
+        "setup": "1 of your Presence starts the game already destroyed. Put 2 Presence on your starting board. 1 in a land with Blight. 1 in a Wetland without Dahan."
+      },
+      "volcano": {
+        "name": "Volcano Looming High",
+        "complexity": 2,
+        "powers": {
+          "offense": null,
+          "control": null,
+          "fear": null,
+          "defense": null,
+          "utility": null
+        },
+        "setup": "Put 1 Presence on your starting board in a mountain of your choice. Push all Dahan from that land."
+      }
+    },
     "adversaries": {},
     "scenarios": {},
-    "boards": {}
+    "boards": {
+      "E": {
+        "thematic": false
+      },
+      "F": {
+        "thematic": false
+      },
+      "SE": {
+        "thematic": true
+      },
+      "SW": {
+        "thematic": true
+      }
+    }
   }
 }
