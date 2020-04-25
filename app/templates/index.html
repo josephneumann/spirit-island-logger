@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-    <main role="main" class="container">
-        <section class="jumbotron mb-3" style="padding-top:2rem">
+    <div role="main" class="container main">
+        <section class="jumbotron mb-3">
             <h3 class="jumbotron-heading text-center">Log New Game</h3>
             <div class="container">
                 <form action="" method="post"> {{ form.hidden_tag() }}
@@ -72,5 +72,5 @@
             </table>
         {% endblock %}
         </div>
-    </main>
+    </div>
 {% endblock %}

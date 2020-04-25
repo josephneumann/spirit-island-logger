@@ -1,10 +1,9 @@
 {% extends "index.html" %}
 {% block content %}
-    <div class="container mt-4">
+    <div class="container mt-4 main">
         <div class="text-center">
             <h4>Spirits</h4>
         </div>
-    </div>
     <div class="container">
         {% for chunk in chunked_spirits %}
             <div class="card-deck card-deck-spirit">
@@ -27,4 +26,6 @@
             </div>
         {% endfor %}
     </div>
+        </div>
+
 {% endblock %}

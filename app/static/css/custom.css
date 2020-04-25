@@ -18,6 +18,9 @@ body {
   /*background-color: #f5f5f5;*/
 }
 
+.main {
+  padding-top: 3rem;
+}
 .card-deck-spirit {
   margin-bottom: 1em;
 }
@@ -25,3 +28,7 @@ body {
 .game-badge {width: 7em}
 
 .game-row-btn{width: 5em}
+
+.jumbotron{
+  padding-top: 2rem;
+}
