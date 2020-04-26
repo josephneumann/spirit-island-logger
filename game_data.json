@@ -74,7 +74,7 @@
         },
         "setup": "Put 2 presence on your starting board: 1 in each of the 2 lands with the most Dahan.",
         "color": {
-          "background": "#255138"
+          "background": "#177769;"
         }
       },
       "rampant": {
@@ -89,7 +89,7 @@
         },
         "setup": "Put 2 Presence on your starting board; 1 in the highest-numbered Wetland, and 1 in the Jungle without any Dahan. (If there is more than 1 such Jungle, you may choose)",
         "color": {
-          "background": "#0f330f"
+          "background": "#354823;"
         }
       },
       "bringer": {
@@ -543,7 +543,7 @@
         },
         "setup": "Put 1 Presence on your starting board in the lowest-numbered Wetlands.",
         "color": {
-          "background": "#7424ca"
+          "background": "#c556f5"
         }
       },
       "finder": {
@@ -573,7 +573,7 @@
         },
         "setup": "Put 3 Presence on your starting board: 1 in the highest-numbered land with 1 Dahan, and 2 in the highest-numbered land without Dahan. Discard the top 3 cards of the Minor Power and Major Power decks.",
         "color": {
-          "background": "#4c429f"
+          "background": "#1773e9;"
         }
       },
       "grinning-trickster": {
