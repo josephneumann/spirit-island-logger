@@ -12,7 +12,7 @@
                             <img class="card-img-top"
                                  src="{{ url_for("static", filename="img/spirits/{}.png".format(spirit.id)) }}"
                                  alt="{{ spirit.name }}">
-                            <div class="card-body">
+                            <div class="card-body p-3">
                                 <h6 class="card-title mb-0  ">{{ spirit.name }}</h6>
                                 <p class="card-text"><small>{{ spirit.expansion.name }}</small></p>
                             </div>
