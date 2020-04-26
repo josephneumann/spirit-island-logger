@@ -134,7 +134,7 @@
         },
         "setup": "Put 3 presence and 2 Blight on your starting board in the highest-numbered Sands. (Blight comes from the box, not the Blight Card)",
         "color": {
-          "background": "#fab247"
+          "background": "#e63c07"
         }
       },
       "serpent": {
