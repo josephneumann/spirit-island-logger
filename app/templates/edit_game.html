@@ -23,7 +23,7 @@
             {% endif %}
 
             {% for s in game.spirits %}
-                <li class="badge badge-info m-1">{{ s.id.capitalize() }}</li>
+                <li class="badge text-light m-1" style="background-color: {{ s.color }}">{{ s.id.capitalize() }}</li>
             {% endfor %}
         </ul>
     </div>

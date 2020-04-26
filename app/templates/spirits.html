@@ -4,28 +4,32 @@
         <div class="text-center">
             <h4>Spirits</h4>
         </div>
-    <div class="container">
-        {% for chunk in chunked_spirits %}
-            <div class="card-deck card-deck-spirit">
-                {% for spirit in chunk %}
-                    <div class="card">
-                        <img class="card-img-top"
-                             src="{{ url_for("static", filename="img/spirits/{}.png".format(spirit.id)) }}"
-                             alt="Card image cap">
-                        <div class="card-body">
-                            <h6 class="card-title">{{ spirit.name }}</h6>
-                            <p class="card-text text-muted">Expansion: {{ spirit.expansion.name }}</p>
-                            <p class="card-text">Complexity: {{ spirit.get_complexity() }}</p>
+        <div class="container">
+            {% for chunk in chunked_spirits %}
+                <div class="card-deck card-deck-spirit">
+                    {% for spirit in chunk %}
+                        <div class="card text-light text-center" style="background-color: {{ spirit.color }}">
+                            <img class="card-img-top"
+                                 src="{{ url_for("static", filename="img/spirits/{}.png".format(spirit.id)) }}"
+                                 alt="{{ spirit.name }}">
+                            <div class="card-body">
+                                <h6 class="card-title mb-0  ">{{ spirit.name }}</h6>
+                                <p class="card-text"><small>{{ spirit.expansion.name }}</small></p>
+                            </div>
+                            <div class="card-footer pt-1 pb-2">
+                                <p class="card-text">
+                                    <small>
+                                        <b>Wins:</b> {{ spirit.get_game_wins() }}
+                                        <b class="ml-2">Losses:</b> {{ spirit.get_game_losses() }}
+                                    </small>
+                                    <span class="badge badge-spirit-complexity badge-light">{{ spirit.get_complexity() }}</span>
+                                </p>
+                            </div>
                         </div>
-                        <div class="card-footer">
-                            <p class="card-text"><small class="text-muted">Wins: {{ spirit.get_game_wins() }}
-                                Losses: {{ spirit.get_game_losses() }}</small></p>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        {% endfor %}
-    </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
         </div>
+    </div>
 
 {% endblock %}

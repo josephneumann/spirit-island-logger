@@ -49,6 +49,7 @@ def seed_spirits(data):
             spirit.defense = data[exp]["spirits"][sp]["powers"].get("defense")
             spirit.utility = data[exp]["spirits"][sp]["powers"].get("utility")
             spirit.setup = data[exp]["spirits"][sp].get("setup")
+            spirit.color = data[exp]["spirits"][sp]["color"].get("background")
             expansion.spirits.append(spirit)
             db.session.add(spirit)
 

@@ -43,6 +43,7 @@ class Spirit(db.Model):
     defense = db.Column(db.Integer)
     utility = db.Column(db.Integer)
     expansion_id = db.Column(db.Text, db.ForeignKey("expansion.id"))
+    color = db.Column(db.Text)
     adversary_handicaps = db.relationship(
         "SpiritAdversaryHandicap",
         backref="spirit",

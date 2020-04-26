@@ -12,7 +12,10 @@
           "defense": 2,
           "utility": 4
         },
-        "setup": "Put 2 presence on your starting board in the highest-numbered Sands."
+        "setup": "Put 2 presence on your starting board in the highest-numbered Sands.",
+        "color": {
+          "background": "#d87334"
+        }
       },
       "river": {
         "name": "River Surges in Sunlight",
@@ -24,6 +27,9 @@
           "fear": 2,
           "defense": 2,
           "utility": 8
+        },
+        "color": {
+          "background": "#307784"
         }
       },
       "vital-strength": {
@@ -36,7 +42,10 @@
           "defense": 10,
           "utility": 6
         },
-        "setup": "Put 3 presence on your starting board: 2 in the highest-numbered Mountain, 1 in the highest-numbered Jungle."
+        "setup": "Put 3 presence on your starting board: 2 in the highest-numbered Mountain, 1 in the highest-numbered Jungle.",
+        "color": {
+          "background": "#494c21"
+        }
       },
       "shadows": {
         "name": "Shadows Flicker Like Flame",
@@ -48,7 +57,10 @@
           "defense": 2,
           "utility": 2
         },
-        "setup": "Put 3 presence on your starting board: 2 in the highest-numbered Jungle and 1 in land #5"
+        "setup": "Put 3 presence on your starting board: 2 in the highest-numbered Jungle and 1 in land #5",
+        "color": {
+          "background": "#1f3c44"
+        }
       },
       "thunderspeaker": {
         "name": "Thunderspeaker",
@@ -60,7 +72,10 @@
           "defense": 4,
           "utility": 2
         },
-        "setup": "Put 2 presence on your starting board: 1 in each of the 2 lands with the most Dahan."
+        "setup": "Put 2 presence on your starting board: 1 in each of the 2 lands with the most Dahan.",
+        "color": {
+          "background": "#255138"
+        }
       },
       "rampant": {
         "name": "A Spread of Rampant Green",
@@ -72,7 +87,10 @@
           "defense": 10,
           "utility": 8
         },
-        "setup": "Put 2 Presence on your starting board; 1 in the highest-numbered Wetland, and 1 in the Jungle without any Dahan. (If there is more than 1 such Jungle, you may choose)"
+        "setup": "Put 2 Presence on your starting board; 1 in the highest-numbered Wetland, and 1 in the Jungle without any Dahan. (If there is more than 1 such Jungle, you may choose)",
+        "color": {
+          "background": "#0f330f"
+        }
       },
       "bringer": {
         "name": "Bringer of Dreams and Nightmares",
@@ -84,7 +102,10 @@
           "defense": 4,
           "utility": 4
         },
-        "setup": "Put 2 Presence on your starting board in the highest-numbered Sands."
+        "setup": "Put 2 Presence on your starting board in the highest-numbered Sands.",
+        "color": {
+          "background": "#223478"
+        }
       },
       "ocean": {
         "name": "Ocean's Hungry Grasp",
@@ -96,7 +117,10 @@
           "defense": 6,
           "utility": 4
         },
-        "setup": "Put 2 presence onto your starting board: 1 in the Ocean, and 1 in a Coastal land of your choice."
+        "setup": "Put 2 presence onto your starting board: 1 in the Ocean, and 1 in a Coastal land of your choice.",
+        "color": {
+          "background": "#3d5c8c"
+        }
       },
       "wildfire": {
         "name": "Heart of the Wildfire",
@@ -108,7 +132,10 @@
           "defense": 2,
           "utility": 4
         },
-        "setup": "Put 3 presence and 2 Blight on your starting board in the highest-numbered Sands. (Blight comes from the box, not the Blight Card)"
+        "setup": "Put 3 presence and 2 Blight on your starting board in the highest-numbered Sands. (Blight comes from the box, not the Blight Card)",
+        "color": {
+          "background": "#fab247"
+        }
       },
       "serpent": {
         "name": "Serpent Slumbering Beneath the Island",
@@ -120,7 +147,10 @@
           "defense": 8,
           "utility": 10
         },
-        "setup": "Put 1 presence on your starting board in the land #5."
+        "setup": "Put 1 presence on your starting board in the land #5.",
+        "color": {
+          "background": "#85501f"
+        }
       }
     },
     "blight-cards": 2,
@@ -377,7 +407,10 @@
           "defense": 4,
           "utility": 2
         },
-        "setup": "Put 1 presence and 1 beast on your starting board in the highest-numbered Jungle. Put 1 presence in a land of your choice with beast anywhere on the island."
+        "setup": "Put 1 presence and 1 beast on your starting board in the highest-numbered Jungle. Put 1 presence in a land of your choice with beast anywhere on the island.",
+        "color": {
+          "background": "#33372f"
+        }
       },
       "keeper": {
         "name": "Keeper of the Forbidden Wilds",
@@ -389,7 +422,10 @@
           "defense": 8,
           "utility": 6
         },
-        "setup": "Put 1 presence and 1 wild on your starting board in the highest-numbered Jungle."
+        "setup": "Put 1 presence and 1 wild on your starting board in the highest-numbered Jungle.",
+        "color": {
+          "background": "#2c2e14"
+        }
       }
     },
     "blight-cards": 7,
@@ -505,7 +541,10 @@
           "defense": 10,
           "utility": 6
         },
-        "setup": "Put 1 Presence on your starting board in the lowest-numbered Wetlands."
+        "setup": "Put 1 Presence on your starting board in the lowest-numbered Wetlands.",
+        "color": {
+          "background": "#7424ca"
+        }
       },
       "finder": {
         "name": "Finder of Paths Unseen",
@@ -517,7 +556,10 @@
           "defense": 6,
           "utility": 6
         },
-        "setup": "Put 2 Presence on your starting board: 1 in land #3; 1 in the highest-numbered land. Note that you have 6 Unique Power Cards."
+        "setup": "Put 2 Presence on your starting board: 1 in land #3; 1 in the highest-numbered land. Note that you have 6 Unique Power Cards.",
+        "color": {
+          "background": "#12695e"
+        }
       },
       "fractured-days": {
         "name": "Fractured Days Split the Sky",
@@ -529,7 +571,10 @@
           "defense": null,
           "utility": null
         },
-        "setup": "Put 3 Presence on your starting board: 1 in the highest-numbered land with 1 Dahan, and 2 in the highest-numbered land without Dahan. Discard the top 3 cards of the Minor Power and Major Power decks."
+        "setup": "Put 3 Presence on your starting board: 1 in the highest-numbered land with 1 Dahan, and 2 in the highest-numbered land without Dahan. Discard the top 3 cards of the Minor Power and Major Power decks.",
+        "color": {
+          "background": "#4c429f"
+        }
       },
       "grinning-trickster": {
         "name": "Grinning Trickster Stirs Up Trouble",
@@ -541,7 +586,10 @@
           "defense": 6,
           "utility": 2
         },
-        "setup": "Put 2 Presence on your starting board: 1 in the highest-numbered land with Dahan, and 1 in land #4."
+        "setup": "Put 2 Presence on your starting board: 1 in the highest-numbered land with Dahan, and 1 in land #4.",
+        "color": {
+          "background": "#303735"
+        }
       },
       "lure": {
         "name": "Lure of the Deep Wilderness",
@@ -553,7 +601,10 @@
           "defense": 4,
           "utility": 2
         },
-        "setup": "Put 3 Presence on your starting board: 2 in land #8, and 1 in land #7. Add 1 Beast to land #8."
+        "setup": "Put 3 Presence on your starting board: 2 in land #8, and 1 in land #7. Add 1 Beast to land #8.",
+        "color": {
+          "background": "#a67a3f"
+        }
       },
       "many-minds": {
         "name": "Many Minds Move as One",
@@ -565,7 +616,10 @@
           "defense": 10,
           "utility": 2
         },
-        "setup": "Put 1 Presence on your starting board in a land with Beast. Note that you have 5 Unique Power Cards."
+        "setup": "Put 1 Presence on your starting board in a land with Beast. Note that you have 5 Unique Power Cards.",
+        "color": {
+          "background": "#3a3d41"
+        }
       },
       "shifting-memory": {
         "name": "Shifting Memory of Ages",
@@ -577,7 +631,10 @@
           "defense": 8,
           "utility": 10
         },
-        "setup": "Put 2 Presence on your starting board in the highest-numbered land that is Sands or Mountain. Get out the Element Markers. Prepare 1 Moon, 1 Air, 1 Earth Element marker (put them by your Special Rules)."
+        "setup": "Put 2 Presence on your starting board in the highest-numbered land that is Sands or Mountain. Get out the Element Markers. Prepare 1 Moon, 1 Air, 1 Earth Element marker (put them by your Special Rules).",
+        "color": {
+          "background": "#583838"
+        }
       },
       "shroud": {
         "name": "Shroud of Silent mist",
@@ -589,7 +646,10 @@
           "defense": 4,
           "utility": 2
         },
-        "setup": "Put 2 Presence on your starting board: 1 in the highest-numbered Wetland and 1 in the highest-numbered Mountain."
+        "setup": "Put 2 Presence on your starting board: 1 in the highest-numbered Wetland and 1 in the highest-numbered Mountain.",
+        "color": {
+          "background": "#7eabaa"
+        }
       },
       "starlight": {
         "name": "Starlight Seeks Its Form",
@@ -601,7 +661,10 @@
           "defense": null,
           "utility": null
         },
-        "setup": "Put 1 Presence on your starting board, in a land with Blight."
+        "setup": "Put 1 Presence on your starting board, in a land with Blight.",
+        "color": {
+          "background": "#131848"
+        }
       },
       "stone": {
         "name": "Stone's Unyielding Defiance",
@@ -613,7 +676,10 @@
           "defense": 10,
           "utility": 4
         },
-        "setup": "Put 2 Presence on your starting board: 1 in the lowest-numbered Mountain without Dahan; 1 in an adjacent land that has Blight (if possible) or is Sands (if not)."
+        "setup": "Put 2 Presence on your starting board: 1 in the lowest-numbered Mountain without Dahan; 1 in an adjacent land that has Blight (if possible) or is Sands (if not).",
+        "color": {
+          "background": "#53636f"
+        }
       },
       "vengeance": {
         "name": "Vengeance as a Burning Plague",
@@ -625,7 +691,10 @@
           "defense": null,
           "utility": null
         },
-        "setup": "1 of your Presence starts the game already destroyed. Put 2 Presence on your starting board. 1 in a land with Blight. 1 in a Wetland without Dahan."
+        "setup": "1 of your Presence starts the game already destroyed. Put 2 Presence on your starting board. 1 in a land with Blight. 1 in a Wetland without Dahan.",
+        "color": {
+          "background": "#992825"
+        }
       },
       "volcano": {
         "name": "Volcano Looming High",
@@ -637,7 +706,10 @@
           "defense": null,
           "utility": null
         },
-        "setup": "Put 1 Presence on your starting board in a mountain of your choice. Push all Dahan from that land."
+        "setup": "Put 1 Presence on your starting board in a mountain of your choice. Push all Dahan from that land.",
+        "color": {
+          "background": "#1e212c"
+        }
       }
     },
     "adversaries": {},

@@ -58,7 +58,7 @@ def spirits():
     return render_template("spirits.html", title="Spirits", chunked_spirits=spirits)
 
 
-@app.route("/game/<game_id>/edit", methods=["GET", "POST"])
+@app.route("/games/<game_id>/edit", methods=["GET", "POST"])
 def edit_game(game_id):
     form = EditGameForm()
     gm = Game.query.get_or_404(game_id)
@@ -143,7 +143,7 @@ def edit_game(game_id):
     return render_template("edit_game.html", title="Edit Game", game=gm, form=form)
 
 
-@app.route("/game/<game_id>/score", methods=["GET", "POST"])
+@app.route("/games/<game_id>/score", methods=["GET", "POST"])
 def score_game(game_id):
     form = ScoreGameForm()
     gm = Game.query.get_or_404(game_id)
@@ -171,14 +171,14 @@ def score_game(game_id):
     return render_template("score_game.html", title="Score Game", game=gm, form=form)
 
 
-@app.route("/game/<game_id>/delete")
+@app.route("/games/<game_id>/delete")
 def delete_game(game_id):
     db.session.delete(Game.query.get_or_404(game_id))
     db.session.commit()
     return redirect(url_for("index"))
 
 
-@app.route("/game/<game_id>/randomize", methods=["GET", "POST"])
+@app.route("/games/<game_id>/randomize", methods=["GET", "POST"])
 def randomize_game(game_id):
     gm = Game.query.get_or_404(game_id)
     form = RandomizeGameForm()
