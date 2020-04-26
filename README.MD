@@ -77,7 +77,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 ## License
 [MIT](https://choosealicense.com/licenses/mit/) License.  See `LICENSE.txt`
 
-[dahan]: app/static/img/dahan.png
+[dahan]: app/static/img/icons/dahan.png
 [index]: app/static/img/docs/index.png
 [edit_game]: app/static/img/docs/edit_game.png
 [randomize_game]: app/static/img/docs/randomize_game.png
