@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+{% block content %}
+    <div class="container main text-center">
+        <h3>{{ spirit.name }}</h3>
+        <div class="card-deck mb-2">
+            <div class="container card card-spirit-panel">
+                <img class="card-img-bottom"
+                     src="{{ url_for("static", filename="img/panels/{}-front.png".format(spirit.id)) }}">
+            </div>
+            <div class="container card card-spirit-panel">
+                <img class="card-img-bottom"
+                     src="{{ url_for("static", filename="img/panels/{}-back.png".format(spirit.id)) }}">
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-4"></div>
+            <h4 class="col-4">Game History</h4>
+            <div class="col-4 text-right px-4">
+                <a class="btn btn-sm btn-success" href="{{ url_for("spirit_create_game", spirit_id=spirit.id) }}">New
+                    Game</a>
+            </div>
+
+        </div>
+        {% block game_table %}
+            {{ super() }}
+        {% endblock %}
+    </div>
+{% endblock %}

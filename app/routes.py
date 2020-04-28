@@ -9,7 +9,7 @@ The project is released under the MIT License Agreement.  See the LICENSE.txt fi
 from app import app, db
 from flask import render_template, url_for, redirect, request, flash
 from app.models import Game, Spirit, Board, AdversaryLevel, Scenario, Expansion
-from app.forms import CreateGameForm, EditGameForm, ScoreGameForm, RandomizeGameForm
+from app.forms import CreateGameForm, EditGameForm, ScoreGameForm, RandomizeGameForm, SpiritCreateGameForm
 import itertools
 
 
@@ -50,12 +50,6 @@ def index():
 def games():
     games = Game.query.order_by(Game.id.desc()).all()
     return render_template("games.html", title="Games", games=games)
-
-
-@app.route("/spirits")
-def spirits():
-    spirits = chunked_iterable(Spirit.query.order_by(Spirit.name).all(), 3)  # This is a generator
-    return render_template("spirits.html", title="Spirits", chunked_spirits=spirits)
 
 
 @app.route("/games/<game_id>/edit", methods=["GET", "POST"])
@@ -222,3 +216,40 @@ def randomize_game(game_id):
     return render_template(
         "randomize_game.html", title="Randomize Game", game=gm, form=form
     )
+
+
+@app.route("/spirits")
+def spirits():
+    spirits = chunked_iterable(Spirit.query.order_by(Spirit.name).all(), 3)  # This is a generator
+    return render_template("spirits.html", title="Spirits", chunked_spirits=spirits)
+
+
+@app.route("/spirits/<spirit_id>")
+def spirit(spirit_id):
+    spirit = Spirit.query.get_or_404(spirit_id)
+    games = spirit.games
+    return render_template("spirit.html", title=spirit.name, spirit=spirit, games=games)
+
+
+@app.route("/spirits/<spirit_id>/create_game", methods=["GET", "POST"])
+def spirit_create_game(spirit_id):
+    form = SpiritCreateGameForm()
+    form.expansions.choices = [
+        (e.id, e.name) for e in Expansion.query.filter(Expansion.id != "base").all()
+    ]
+    form.players.choices = [(str(x), str(x)) for x in range(1, 5)]
+    form.spirits.choices = [(s.id, s.name) for s in Spirit.query.all()]
+    if form.validate_on_submit():
+        new_game = Game(
+            player_count=int(form.data.get("players")), expansions=form.expansions.data
+        )
+        new_game.spirits = [Spirit.query.get(s) for s in form.spirits.data]
+        db.session.add(new_game)
+        db.session.commit()
+        return redirect(url_for("edit_game", game_id=new_game.id))
+    elif request.method == "GET":
+        form.spirits.data = spirit_id
+    for error in form.errors:
+        flash("{}: {}".format(error.capitalize(), form.errors[error][0]), "danger")
+
+    return render_template("spirit_create_game.html", title="Create Game", form=form)

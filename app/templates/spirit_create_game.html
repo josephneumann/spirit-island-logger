@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+    <div role="main" class="container main">
+        <section class="jumbotron mb-3">
+            <h3 class="jumbotron-heading text-center">Log New Game</h3>
+            <div class="container">
+                <form action="" method="post"> {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Players</span>
+                            {{ form.players(** {"type":"text","class":"form-control","id":"playerCount","placeholder":"Players","aria-describedby":"playerCountHelp"}) }}
+                        </div>
+                        <small id="playerCountHelp" class="form-text text-muted">Number of players for the game.</small>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="">Expansions</span>
+                            {{ form.expansions(** {"class":"form-control","id":"expansions","aria-describedby":"expansionsHelp","size":"2"}) }}
+                        </div>
+
+                        <small id="expansionsHelp" class="form-text text-muted">Which expansions to use for the
+                            game.</small>
+                    </div>
+                    <div class="col form-group">
+                        <label>Spirits</label>
+                        {{ form.spirits(** {"class":"form-control","id":"spirits"}) }}
+                    </div>
+                    {{ form.create_game(** {"class":"btn btn-primary btn-lg btn-block"}) }}
+                </form>
+            </div>
+        </section>
+{% endblock %}

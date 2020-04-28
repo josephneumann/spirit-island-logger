@@ -41,6 +41,13 @@ def validate_board_count(form, field):
         raise ValidationError("Number of Boards selected does not match player count")
 
 
+class SpiritCreateGameForm(FlaskForm):
+    players = SelectField("Players", validators=[DataRequired()])
+    spirits = SelectMultipleField("Spirits")
+    expansions = SelectMultipleField("Expansions")
+    create_game = SubmitField("Create Game")
+
+
 class EditGameForm(FlaskForm):
     players = IntegerField(
         "Players",
