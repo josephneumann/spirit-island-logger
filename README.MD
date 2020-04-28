@@ -17,9 +17,9 @@ Utilities to calculate the score of completed *Spirit Island* games.
 A [Flask](https://flask.palletsprojects.com/en/1.1.x/) web-app for interacting with the data. You can use this tool to
 track gameplay, randomize games and score them.
 
-### Game History / Home Page
+### Home Page / Game History
 ![index]
-
+![game_history]
 
 ### Game Editor
 ![edit_game]
@@ -85,6 +85,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 [dahan]: app/static/img/icons/dahan.png
 [index]: app/static/img/docs/index.png
+[game_history]: app/static/img/docs/game_history.png
 [edit_game]: app/static/img/docs/edit_game.png
 [randomize_game]: app/static/img/docs/randomize_game.png
 [score_game]: app/static/img/docs/score_game.png
