@@ -31,6 +31,12 @@ track gameplay, randomize games and score them.
 ### Game Scorer
 ![score_game]
 
+### Spirit Summary
+![spirit_summary]
+
+### Spirit Detail
+![spirit_detail]
+
 
 ## Installation and Configuration
 Clone this repository to your machine
@@ -82,4 +88,6 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 [edit_game]: app/static/img/docs/edit_game.png
 [randomize_game]: app/static/img/docs/randomize_game.png
 [score_game]: app/static/img/docs/score_game.png
-[erd]:app/static/img/docs/data_erd.png
+[erd]: app/static/img/docs/data_erd.png
+[spirit_summary]: app/static/img/docs/spirit_summary.png
+[spirit_detail]: app/static/img/docs/spirit_detail.png
