@@ -162,8 +162,9 @@ def seed_boards(data):
 
 
 def seed_admin_user():
-    u = User.query.filter(User.username == "admin").first() or User()
-    u.username = app.config.get("ADMIN_USERNAME")
+    admin_username = app.config.get("ADMIN_USERNAME")
+    u = User.query.filter(User.username == admin_username).first() or User()
+    u.username = admin_username
     u.set_password(app.config.get("ADMIN_PASSWORD"))
     db.session.add(u)
 
