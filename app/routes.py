@@ -52,13 +52,13 @@ def index():
     for error in form.errors:
         flash("{}: {}".format(error.capitalize(), form.errors[error][0]), "danger")
 
-    return render_template("index.html", title="Home", games=games, form=form)
+    return render_template("index.html", title="Spirit Island", games=games, form=form)
 
 @app.route("/games")
 @login_required
 def games():
     games = Game.query.order_by(Game.id.desc()).all()
-    return render_template("games.html", title="Games", games=games)
+    return render_template("games.html", title="Spirit Island - Games", games=games)
 
 
 @app.route("/games/<game_id>/edit", methods=["GET", "POST"])
@@ -144,7 +144,7 @@ def edit_game(game_id):
 
     for error in form.errors:
         flash("{}: {}".format(error.capitalize(), form.errors[error][0]), "danger")
-    return render_template("edit_game.html", title="Edit Game", game=gm, form=form)
+    return render_template("edit_game.html", title="Spirit Island - Edit Game", game=gm, form=form)
 
 
 @app.route("/games/<game_id>/score", methods=["GET", "POST"])
@@ -173,7 +173,7 @@ def score_game(game_id):
         return redirect(url_for("edit_game", game_id=gm.id))
     for error in form.errors:
         flash("{}: {}".format(error.capitalize(), form.errors[error][0]), "danger")
-    return render_template("score_game.html", title="Score Game", game=gm, form=form)
+    return render_template("score_game.html", title="Spirit Island - Score Game", game=gm, form=form)
 
 
 @app.route("/games/<game_id>/delete")
@@ -227,7 +227,7 @@ def randomize_game(game_id):
     for error in form.errors:
         flash("{}: {}".format(error.capitalize(), form.errors[error][0]), "danger")
     return render_template(
-        "randomize_game.html", title="Randomize Game", game=gm, form=form
+        "randomize_game.html", title="Spirit Island -Randomize Game", game=gm, form=form
     )
 
 
@@ -237,7 +237,7 @@ def spirits():
     spirits = chunked_iterable(
         Spirit.query.order_by(Spirit.name).all(), 3
     )  # This is a generator
-    return render_template("spirits.html", title="Spirits", chunked_spirits=spirits)
+    return render_template("spirits.html", title="Spirit Island - Spirits", chunked_spirits=spirits)
 
 
 @app.route("/spirits/<spirit_id>")
@@ -245,7 +245,7 @@ def spirits():
 def spirit(spirit_id):
     spirit = Spirit.query.get_or_404(spirit_id)
     games = spirit.games
-    return render_template("spirit.html", title=spirit.name, spirit=spirit, games=games)
+    return render_template("spirit.html", title="Spirit Island - {}".format(spirit.name), spirit=spirit, games=games)
 
 
 @app.route("/spirits/<spirit_id>/create_game", methods=["GET", "POST"])
@@ -270,7 +270,7 @@ def spirit_create_game(spirit_id):
     for error in form.errors:
         flash("{}: {}".format(error.capitalize(), form.errors[error][0]), "danger")
 
-    return render_template("spirit_create_game.html", title="Create Game", form=form)
+    return render_template("spirit_create_game.html", title="Spirit Island - Create Game", form=form)
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -285,7 +285,7 @@ def login():
             return redirect(url_for("login"))
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for("index"))
-    return render_template("login.html", title="Log In", form=form)
+    return render_template("login.html", title="Spirit Island - Log In", form=form)
 
 
 @app.route("/logout")
