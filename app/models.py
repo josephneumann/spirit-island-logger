@@ -9,6 +9,7 @@ The project is released under the MIT License Agreement.  See the LICENSE.txt fi
 from app import db
 from datetime import datetime
 from typing import List
+from flask_bcrypt import generate_password_hash, check_password_hash
 import random
 
 
@@ -551,3 +552,9 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
+
+    def set_password(self, pw):
+        self.password_hash = generate_password_hash(password=pw)
+
+    def check_password(self, pw):
+        return check_password_hash(self.password_hash, pw)
