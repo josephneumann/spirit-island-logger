@@ -15,7 +15,6 @@ Create Date: 2020-04-17 21:43:53.247368
 """
 from alembic import op
 import sqlalchemy as sa
-from seed import seed_game_data
 
 
 # revision identifiers, used by Alembic.
@@ -114,9 +113,6 @@ def upgrade():
         sa.ForeignKeyConstraint(["spirit_id"], ["spirit.id"],),
         sa.PrimaryKeyConstraint("spirit_id", "scenario_id"),
     )
-
-    # Seed data
-    seed_game_data()
 
 
 def downgrade():
