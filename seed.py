@@ -186,3 +186,4 @@ def seed_user_data():
 
 if __name__ == "__main__":
     seed_game_data()
+    seed_user_data()
