@@ -68,9 +68,14 @@ Set the secret key in environment variable
 export SECRET_KEY={somethingsupersecret}
 ```
 
-Run the Alembic database migrations to head. This will create the database, it's relations and will also seed the tables with the data from `game_data.json`
+Run the Alembic database migrations to head. This will create the database relations.
 ```bash
 flask db upgrade
+```
+
+Run seed.py to seed the tables
+```bash
+python seed.py
 ```
 
 ## Usage
