@@ -21,6 +21,8 @@ from wtforms import (
     SelectMultipleField,
     SelectField,
     TextAreaField,
+    PasswordField,
+    StringField,
 )
 from wtforms.validators import DataRequired, NumberRange, Optional
 
@@ -96,3 +98,10 @@ class RandomizeGameForm(FlaskForm):
     )
     force = BooleanField("Force Over-write")
     randomize = SubmitField("Randomize Game")
+
+
+class LoginForm(FlaskForm):
+    username = StringField("Username")
+    password = PasswordField("Password")
+    remember_me = BooleanField("Remember Me")
+    login = SubmitField("Log In")

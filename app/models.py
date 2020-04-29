@@ -6,11 +6,12 @@ This file is part of an open-source game logger and randomizer for the tabletop 
 which is owned by  `Greater Than Games`
 The project is released under the MIT License Agreement.  See the LICENSE.txt file included in the package
 """
-from app import db
+import random
 from datetime import datetime
 from typing import List
 from flask_bcrypt import generate_password_hash, check_password_hash
-import random
+from flask_login import UserMixin
+from app import db, login
 
 
 class Expansion(db.Model):
@@ -70,18 +71,18 @@ class Spirit(db.Model):
         """Get count of games this spirit has won"""
         return (
             Game.query.filter(Game.spirits.any(id=self.id))
-            .filter(Game.is_complete)
-            .filter(Game.is_victory)
-            .count()
+                .filter(Game.is_complete)
+                .filter(Game.is_victory)
+                .count()
         )
 
     def get_game_losses(self):
         """Get count of games this spirit has lost"""
         return (
             Game.query.filter(Game.spirits.any(id=self.id))
-            .filter(Game.is_complete)
-            .filter(~Game.is_victory)
-            .count()
+                .filter(Game.is_complete)
+                .filter(~Game.is_victory)
+                .count()
         )
 
 
@@ -209,10 +210,10 @@ class Game(db.Model):
     notes = db.Column(db.Text)
 
     def __init__(
-        self,
-        player_count: int,
-        date: datetime = datetime.today(),
-        expansions: List[str] = None,
+            self,
+            player_count: int,
+            date: datetime = datetime.today(),
+            expansions: List[str] = None,
     ):
         """
         Custom initialization
@@ -225,7 +226,7 @@ class Game(db.Model):
             ex: ["branch-and-claw","jagged-earth"]
         """
         if not (
-            isinstance(player_count, int) and player_count > 0 and player_count <= 4
+                isinstance(player_count, int) and player_count > 0 and player_count <= 4
         ):
             raise ValueError("Player count must be integer value of 1-4 players")
         self.player_count = player_count  # Player count is required to initialize Game
@@ -264,9 +265,9 @@ class Game(db.Model):
             Spirit.query.filter(
                 Spirit.expansion_id.in_([e.id for e in self.expansions])
             )
-            .filter(Spirit.complexity <= max_complexity)
-            .filter(~Spirit.id.in_([s.id for s in self.spirits]))
-            .all()
+                .filter(Spirit.complexity <= max_complexity)
+                .filter(~Spirit.id.in_([s.id for s in self.spirits]))
+                .all()
         )
 
     def assign_random_spirits(self, max_complexity: int) -> None:
@@ -300,8 +301,8 @@ class Game(db.Model):
             Scenario.query.filter(
                 Scenario.expansion_id.in_([e.id for e in self.expansions])
             )
-            .filter(Scenario.difficulty <= max_difficulty)
-            .all()
+                .filter(Scenario.difficulty <= max_difficulty)
+                .all()
         )
 
     def assign_random_scenario(self, max_difficulty: int) -> None:
@@ -314,7 +315,7 @@ class Game(db.Model):
             self.scenario = random.choice(self.get_available_scenarios(max_difficulty))
 
     def get_available_adversary_levels(
-        self, max_difficulty: int
+            self, max_difficulty: int
     ) -> List[AdversaryLevel]:
         """
         Retrieve a scalar of all Adversaries that are available given the games Expansions
@@ -323,9 +324,9 @@ class Game(db.Model):
         """
         return (
             AdversaryLevel.query.join(Adversary)
-            .filter(Adversary.expansion_id.in_([e.id for e in self.expansions]))
-            .filter(AdversaryLevel.difficulty <= max_difficulty)
-            .all()
+                .filter(Adversary.expansion_id.in_([e.id for e in self.expansions]))
+                .filter(AdversaryLevel.difficulty <= max_difficulty)
+                .all()
         )
 
     def assign_random_adversary(self, max_difficulty: int) -> None:
@@ -352,9 +353,9 @@ class Game(db.Model):
         """
         return (
             Board.query.filter(Board.expansion_id.in_([e.id for e in self.expansions]))
-            .filter(~Board.id.in_(b.id for b in self.boards))
-            .filter(Board.is_thematic.is_(thematic))
-            .all()
+                .filter(~Board.id.in_(b.id for b in self.boards))
+                .filter(Board.is_thematic.is_(thematic))
+                .all()
         )
 
     def assign_random_boards(self, thematic: bool) -> None:
@@ -420,24 +421,24 @@ class Game(db.Model):
             if self.adversary_level:
                 sah = (
                     SpiritAdversaryHandicap.query.filter_by(spirit_id=s.id)
-                    .filter_by(adversary_id=self.adversary_level.adversary_id)
-                    .first()
+                        .filter_by(adversary_id=self.adversary_level.adversary_id)
+                        .first()
                 )
                 if sah:
                     self.handicap += sah.handicap
             if self.scenario:
                 ssh = (
                     SpiritScenarioHandicap.query.filter_by(spirit_id=s.id)
-                    .filter_by(scenario_id=self.scenario.id)
-                    .first()
+                        .filter_by(scenario_id=self.scenario.id)
+                        .first()
                 )
                 if ssh:
                     self.handicap += ssh.handicap
         if self.scenario and self.adversary_level:
             scn_adv_handicap = (
                 ScenarioAdversaryHandicap.query.filter_by(scenario_id=self.scenario.id)
-                .filter_by(adversary_id=self.adversary_level.adversary_id)
-                .first()
+                    .filter_by(adversary_id=self.adversary_level.adversary_id)
+                    .first()
             )
             if scn_adv_handicap:
                 self.handicap += scn_adv_handicap.handicap
@@ -456,12 +457,12 @@ class Game(db.Model):
         self.boards = []
 
     def randomize(
-        self,
-        use_thematic_boards: bool = True,
-        spirit_max_complexity: int = 3,
-        scenario_max_difficulty: int = None,
-        adversary_max_difficulty: int = None,
-        force: bool = False,
+            self,
+            use_thematic_boards: bool = True,
+            spirit_max_complexity: int = 3,
+            scenario_max_difficulty: int = None,
+            adversary_max_difficulty: int = None,
+            force: bool = False,
     ):
         """
         Randomize a Game of Spirit Island
@@ -504,7 +505,7 @@ class Game(db.Model):
         self.calculate_handicap()
 
     def calculate_score(
-        self, victory: bool, invader_cards_in_deck: int, dahan: int, blight: int
+            self, victory: bool, invader_cards_in_deck: int, dahan: int, blight: int
     ) -> int:
         """
         Assign a score to the game
@@ -544,7 +545,7 @@ class Game(db.Model):
         return "Victory" if self.is_victory else "Defeat"
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
@@ -558,3 +559,8 @@ class User(db.Model):
 
     def check_password(self, pw):
         return check_password_hash(self.password_hash, pw)
+
+
+@login.user_loader
+def load_user(id):
+    return User.query.get(int(id))

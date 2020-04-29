@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block navbar %}
+{% endblock %}
+{% block alerts %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+    <form action="" method="post" class="form-signin text-center mt-4">
+        {{ form.hidden_tag() }}
+        <img class="mb-4" src="{{ url_for("static", filename="/img/icons/fear.png") }}" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Log In</h1>
+        <label for="username" class="sr-only">Username</label>
+        {{ form.username(** {"class":"form-control","id":"username","placeholder":"Username", "type":"username"}) }}
+        <label for="password" class="sr-only">Password</label>
+        {{ form.password(** {"class":"form-control","id":"password","placeholder":"Password"}) }}
+        <div class="checkbox mb-3">
+            <label>
+                {{ form.remember_me(** {"type":"checkbox","id":"rememberMe"}) }} Remember Me
+            </label>
+        </div>
+        {{ form.login(** {"class":"btn btn-primary btn-lg btn-block"}) }}
+    </form>
+{% endblock %}

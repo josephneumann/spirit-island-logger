@@ -8,8 +8,16 @@ The project is released under the MIT License Agreement.  See the LICENSE.txt fi
 """
 from app import app, db
 from flask import render_template, url_for, redirect, request, flash
-from app.models import Game, Spirit, Board, AdversaryLevel, Scenario, Expansion
-from app.forms import CreateGameForm, EditGameForm, ScoreGameForm, RandomizeGameForm, SpiritCreateGameForm
+from flask_login import current_user, login_user, logout_user, login_required
+from app.models import Game, Spirit, Board, AdversaryLevel, Scenario, Expansion, User
+from app.forms import (
+    CreateGameForm,
+    EditGameForm,
+    ScoreGameForm,
+    RandomizeGameForm,
+    SpiritCreateGameForm,
+    LoginForm,
+)
 import itertools
 
 
@@ -24,6 +32,7 @@ def chunked_iterable(iterable, size):
 
 @app.route("/", methods=["GET", "POST"])
 @app.route("/index", methods=["GET", "POST"])
+@login_required
 def index():
     games = Game.query.order_by(Game.date.desc()).limit(
         5
@@ -45,14 +54,15 @@ def index():
 
     return render_template("index.html", title="Home", games=games, form=form)
 
-
 @app.route("/games")
+@login_required
 def games():
     games = Game.query.order_by(Game.id.desc()).all()
     return render_template("games.html", title="Games", games=games)
 
 
 @app.route("/games/<game_id>/edit", methods=["GET", "POST"])
+@login_required
 def edit_game(game_id):
     form = EditGameForm()
     gm = Game.query.get_or_404(game_id)
@@ -138,6 +148,7 @@ def edit_game(game_id):
 
 
 @app.route("/games/<game_id>/score", methods=["GET", "POST"])
+@login_required
 def score_game(game_id):
     form = ScoreGameForm()
     gm = Game.query.get_or_404(game_id)
@@ -166,6 +177,7 @@ def score_game(game_id):
 
 
 @app.route("/games/<game_id>/delete")
+@login_required
 def delete_game(game_id):
     db.session.delete(Game.query.get_or_404(game_id))
     db.session.commit()
@@ -173,6 +185,7 @@ def delete_game(game_id):
 
 
 @app.route("/games/<game_id>/randomize", methods=["GET", "POST"])
+@login_required
 def randomize_game(game_id):
     gm = Game.query.get_or_404(game_id)
     form = RandomizeGameForm()
@@ -219,12 +232,16 @@ def randomize_game(game_id):
 
 
 @app.route("/spirits")
+@login_required
 def spirits():
-    spirits = chunked_iterable(Spirit.query.order_by(Spirit.name).all(), 3)  # This is a generator
+    spirits = chunked_iterable(
+        Spirit.query.order_by(Spirit.name).all(), 3
+    )  # This is a generator
     return render_template("spirits.html", title="Spirits", chunked_spirits=spirits)
 
 
 @app.route("/spirits/<spirit_id>")
+@login_required
 def spirit(spirit_id):
     spirit = Spirit.query.get_or_404(spirit_id)
     games = spirit.games
@@ -232,6 +249,7 @@ def spirit(spirit_id):
 
 
 @app.route("/spirits/<spirit_id>/create_game", methods=["GET", "POST"])
+@login_required
 def spirit_create_game(spirit_id):
     form = SpiritCreateGameForm()
     form.expansions.choices = [
@@ -253,3 +271,28 @@ def spirit_create_game(spirit_id):
         flash("{}: {}".format(error.capitalize(), form.errors[error][0]), "danger")
 
     return render_template("spirit_create_game.html", title="Create Game", form=form)
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for("index"))
+    form = LoginForm()
+    print(request)
+    if form.validate_on_submit():
+        print("validated")
+        user = User.query.filter(User.username == form.username.data).first()
+        if user is None or not user.check_password(form.password.data):
+            flash("Invalid username or password", "danger")
+            return redirect(url_for("login"))
+        login_user(user, remember=form.remember_me.data)
+        return redirect(url_for("index"))
+    print(form.errors)
+    return render_template("login.html", title="Log In", form=form)
+
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("login"))
