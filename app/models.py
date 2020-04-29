@@ -555,7 +555,7 @@ class User(UserMixin, db.Model):
         return '<User {}>'.format(self.username)
 
     def set_password(self, pw):
-        self.password_hash = generate_password_hash(password=pw)
+        self.password_hash = generate_password_hash(password=pw).decode("utf-8")
 
     def check_password(self, pw):
         return check_password_hash(self.password_hash, pw)
