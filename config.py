@@ -13,3 +13,4 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME") or "admin"
     ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD") or "admin"
+    LOG_TO_STDOUT = True
