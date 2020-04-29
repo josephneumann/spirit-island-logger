@@ -278,16 +278,13 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for("index"))
     form = LoginForm()
-    print(request)
     if form.validate_on_submit():
-        print("validated")
         user = User.query.filter(User.username == form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash("Invalid username or password", "danger")
             return redirect(url_for("login"))
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for("index"))
-    print(form.errors)
     return render_template("login.html", title="Log In", form=form)
 
 
