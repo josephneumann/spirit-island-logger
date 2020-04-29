@@ -31,49 +31,62 @@
             </div>
             {% block game_table %}
                 <div class="table-responsive">
-                <table class="table table-hover">
-                    <thead class="text-center">
-                    <th scope="col">Date</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Spirits</th>
-                    <th scope="col">Score</th>
-                    <th scope="col">Actions</th>
-                    </thead>
-                    <tbody>
-                    {% if not games %}
-                    <tr class="text-center text-muted">
-                        <td colspan="6">No Game Data Available</td>
-                    </tr>
-                    {% else %}
-                    {% for game in games %}
-                        <tr class="text-center">
-                            <td>{{ game.date }}</td>
-                            <td><span
-                                    class="badge game-row-badge {% if not game.is_complete %} badge-danger {% elif game.is_victory %} badge-success {% else %} badge-secondary {% endif %}">{{ game.status }}</span>
-                            </td>
-                                <td> {% for s in game.spirits %} <a href="{{ url_for("spirit",spirit_id=s.id) }}"><span class="badge text-light m-1" style="background-color: {{ s.color }}">{{ s.id }}</span></a> {% endfor %}</td>
-                            {% if game.score %}
-                                <td>{{ game.score }}</td>
-                            {% else %}
-                                <td><a class="btn btn-sm btn-outline-secondary game-row-btn"
-                                       href="{{ url_for('score_game', game_id=game.id) }}">Score</a></td>
-                            {% endif %}
-                            <td>
-                                <div class="btn-group" role="group" aria-label="gameActions">
-                                    <a href="{{ url_for('edit_game', game_id = game.id) }} ">
-                                        <button class="btn btn-outline-secondary btn-sm mr-2 game-row-btn">Edit
-                                        </button>
-                                    </a>
-                                    <a href="{{ url_for('delete_game', game_id = game.id) }} ">
-                                        <button class="btn btn-outline-danger btn-sm game-row-btn">Delete</button>
-                                    </a>
-                                </div>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    {% endif %}
-                    </tbody>
-                </table>
+                    <table class="table table-hover">
+                        <thead class="text-center">
+                        <th scope="col">Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Spirits</th>
+                        {% if request.endpoint != "index" %}
+                            <th scope="col">Difficulty</th>
+                            <th scope="col">Score</th>
+                        {% else %}
+                        {% endif %}
+                        <th scope="col">Actions</th>
+                        </thead>
+                        <tbody>
+                        {% if not games %}
+                            <tr class="text-center text-muted">
+                                <td colspan="6">No Game Data Available</td>
+                            </tr>
+                        {% else %}
+                            {% for game in games %}
+                                <tr class="text-center">
+                                    <td>{{ game.date }}</td>
+                                    <td><span
+                                            class="badge game-row-badge {% if not game.is_complete %} badge-danger {% elif game.is_victory %} badge-success {% else %} badge-secondary {% endif %}">{{ game.status }}</span>
+                                    </td>
+                                    <td> {% for s in game.spirits %}
+                                        <a href="{{ url_for("spirit",spirit_id=s.id) }}"><span
+                                                class="badge text-light m-1"
+                                                style="background-color: {{ s.color }}">{{ s.id }}</span></a> {% endfor %}
+                                    </td>
+                                    {% if request.endpoint != "index" %}
+                                        <td>{{ game.difficulty }}</td>
+                                        {% if game.score %}
+                                            <td>{{ game.score }}</td>
+                                        {% else %}
+                                            <td><a class="btn btn-sm btn-outline-secondary game-row-btn"
+                                                   href="{{ url_for('score_game', game_id=game.id) }}">Score</a></td>
+                                        {% endif %}
+                                    {% else %}
+                                    {% endif %}
+                                    <td>
+                                        <div class="btn-group" role="group" aria-label="gameActions">
+                                            <a href="{{ url_for('edit_game', game_id = game.id) }} ">
+                                                <button class="btn btn-outline-secondary btn-sm mr-2 game-row-btn">Edit
+                                                </button>
+                                            </a>
+                                            <a href="{{ url_for('delete_game', game_id = game.id) }} ">
+                                                <button class="btn btn-outline-danger btn-sm game-row-btn">Delete
+                                                </button>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
                 </div>
             {% endblock %}
         </div>
