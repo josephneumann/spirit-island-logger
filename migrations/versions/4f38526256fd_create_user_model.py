@@ -7,7 +7,7 @@ Create Date: 2020-04-28 20:21:25.211389
 """
 from alembic import op
 import sqlalchemy as sa
-
+from seed import seed_admin_user
 
 # revision identifiers, used by Alembic.
 revision = "4f38526256fd"
@@ -27,6 +27,8 @@ def upgrade():
     )
     op.create_index(op.f("ix_user_email"), "user", ["email"], unique=True)
     op.create_index(op.f("ix_user_username"), "user", ["username"], unique=True)
+
+    seed_admin_user()
 
 
 def downgrade():

@@ -15,7 +15,7 @@ Create Date: 2020-04-17 21:43:53.247368
 """
 from alembic import op
 import sqlalchemy as sa
-from seed import seed_all
+from seed import seed_game_data
 
 
 # revision identifiers, used by Alembic.
@@ -116,7 +116,7 @@ def upgrade():
     )
 
     # Seed data
-    seed_all()
+    seed_game_data()
 
 
 def downgrade():

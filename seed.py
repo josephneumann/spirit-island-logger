@@ -169,16 +169,20 @@ def seed_admin_user():
     db.session.add(u)
 
 
-def seed_all():
+def seed_game_data():
     data = read_game_data()
     seed_expansions(data)
     seed_spirits(data)
     seed_adversaries(data)
     seed_scenarios(data)
     seed_boards(data)
+    db.session.commit()
+
+
+def seed_user_data():
     seed_admin_user()
     db.session.commit()
 
 
 if __name__ == "__main__":
-    seed_all()
+    seed_game_data()
