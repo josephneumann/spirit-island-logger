@@ -8,6 +8,7 @@ The project is released under the MIT License Agreement.  See the LICENSE.txt fi
 """
 import json
 from app import db
+from app import app
 from app.models import (
     Expansion,
     Spirit,
@@ -18,6 +19,7 @@ from app.models import (
     SpiritScenarioHandicap,
     ScenarioAdversaryHandicap,
     Board,
+    User
 )
 
 
@@ -68,10 +70,10 @@ def seed_scenarios(data):
             for s in data[exp]["scenarios"][scn].get("spirit-handicaps"):
                 spirit = Spirit.query.get(s)
                 spirit_handicap = (
-                    SpiritScenarioHandicap.query.filter_by(spirit_id=s)
-                    .filter_by(scenario_id=scn)
-                    .first()
-                    or SpiritScenarioHandicap()
+                        SpiritScenarioHandicap.query.filter_by(spirit_id=s)
+                        .filter_by(scenario_id=scn)
+                        .first()
+                        or SpiritScenarioHandicap()
                 )
                 spirit_handicap.spirit = spirit
                 spirit_handicap.scenario = scenario
@@ -82,10 +84,10 @@ def seed_scenarios(data):
             for a in data[exp]["scenarios"][scn].get("adversary-handicaps"):
                 adversary = Adversary.query.get(a)
                 adversary_handicap = (
-                    ScenarioAdversaryHandicap.query.filter_by(adversary_id=a)
-                    .filter_by(scenario_id=scn)
-                    .first()
-                    or ScenarioAdversaryHandicap()
+                        ScenarioAdversaryHandicap.query.filter_by(adversary_id=a)
+                        .filter_by(scenario_id=scn)
+                        .first()
+                        or ScenarioAdversaryHandicap()
                 )
                 adversary_handicap.scenario = scenario
                 adversary_handicap.adversary = adversary
@@ -132,10 +134,10 @@ def seed_adversaries(data):
             for s in data[exp]["adversaries"][adv].get("spirit-handicaps"):
                 spirit = Spirit.query.get(s)
                 spirit_handicap = (
-                    SpiritAdversaryHandicap.query.filter_by(spirit_id=s)
-                    .filter_by(adversary_id=adv)
-                    .first()
-                    or SpiritAdversaryHandicap()
+                        SpiritAdversaryHandicap.query.filter_by(spirit_id=s)
+                        .filter_by(adversary_id=adv)
+                        .first()
+                        or SpiritAdversaryHandicap()
                 )
                 spirit_handicap.spirit = spirit
                 spirit_handicap.adversary = adversary
@@ -159,6 +161,13 @@ def seed_boards(data):
             pass
 
 
+def seed_admin_user():
+    u = User.query.filter(User.username == "admin").first() or User()
+    u.username = app.config.get("ADMIN_USERNAME")
+    u.set_password(app.config.get("ADMIN_PASSWORD"))
+    db.session.add(u)
+
+
 def seed_all():
     data = read_game_data()
     seed_expansions(data)
@@ -166,6 +175,7 @@ def seed_all():
     seed_adversaries(data)
     seed_scenarios(data)
     seed_boards(data)
+    seed_admin_user()
     db.session.commit()
 
 

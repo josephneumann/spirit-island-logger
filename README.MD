@@ -57,6 +57,17 @@ Set the `FLASK_APP` environment variable on your machine
 export FLASK_APP=spirit_island.py
 ```
 
+Set admin username and password in environment variables
+```bash
+export ADMIN_USERNAME={myusername}
+export ADMIN_PASSWORD={mypassword}
+```
+
+Set the secret key in environment variable
+```bash
+export SECRET_KEY={somethingsupersecret}
+```
+
 Run the Alembic database migrations to head. This will create the database, it's relations and will also seed the tables with the data from `game_data.json`
 ```bash
 flask db upgrade
