@@ -1,0 +1,1 @@
+web: flask db upgrade; gunicorn spirit_island:app
