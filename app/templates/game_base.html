@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
     <div class="container nav-games">
-        <ul class="nav nav-tabs mt-3">
+        <ul class="nav nav-tabs nav-justified mt-3">
             <li class="nav-item">
                 <a class="nav-link {% if request.endpoint == 'edit_game' %} active {% endif %}" href="{{ url_for('edit_game',game_id=game.id) }}">Edit Game</a>
             </li>
@@ -13,6 +13,9 @@
             {% endif %}
             <li class="nav-item">
                 <a class="nav-link {% if request.endpoint == 'score_game' %} active {% endif %}" href="{{ url_for('score_game',game_id=game.id) }}">Score Game</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-danger" href="{{  url_for('delete_game', game_id = game.id)}}">Delete</a>
             </li>
         </ul>
     </div>

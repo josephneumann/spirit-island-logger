@@ -41,7 +41,7 @@
                             <th scope="col">Score</th>
                         {% else %}
                         {% endif %}
-                        <th scope="col">Actions</th>
+                        <th scope="col"></th>
                         </thead>
                         <tbody>
                         {% if not games %}
@@ -76,10 +76,12 @@
                                                 <button class="btn btn-outline-secondary btn-sm mr-2 game-row-btn">Edit
                                                 </button>
                                             </a>
-                                            <a href="{{ url_for('delete_game', game_id = game.id) }} ">
-                                                <button class="btn btn-outline-danger btn-sm game-row-btn">Delete
-                                                </button>
-                                            </a>
+                                            {% if request.endpoint != "index" %}
+                                                <a href="{{ url_for('delete_game', game_id = game.id) }} ">
+                                                    <button class="btn btn-outline-danger btn-sm game-row-btn">Delete
+                                                    </button>
+                                                </a>
+                                            {% endif %}
                                         </div>
                                     </td>
                                 </tr>
