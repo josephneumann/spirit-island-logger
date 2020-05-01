@@ -35,7 +35,9 @@
                         <thead class="text-center">
                         <th scope="col">Date</th>
                         <th scope="col">Status</th>
+                        {% if request.endpoint != "index" %}
                         <th scope="col">Spirits</th>
+                        {% endif %}
                         {% if request.endpoint != "index" %}
                             <th scope="col">Difficulty</th>
                             <th scope="col">Score</th>
@@ -55,11 +57,13 @@
                                     <td><span
                                             class="badge game-row-badge {% if not game.is_complete %} badge-danger {% elif game.is_victory %} badge-success {% else %} badge-secondary {% endif %}">{{ game.status }}</span>
                                     </td>
+                                    {% if request.endpoint != "index" %}
                                     <td> {% for s in game.spirits %}
                                         <a href="{{ url_for("spirit",spirit_id=s.id) }}"><span
                                                 class="badge text-light m-1"
                                                 style="background-color: {{ s.color }}">{{ s.id }}</span></a> {% endfor %}
                                     </td>
+                                    {% endif %}
                                     {% if request.endpoint != "index" %}
                                         <td>{{ game.difficulty }}</td>
                                         {% if game.score %}
