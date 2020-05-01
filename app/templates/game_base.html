@@ -3,16 +3,16 @@
     <div class="container nav-games">
         <ul class="nav nav-tabs nav-justified mt-3">
             <li class="nav-item">
-                <a class="nav-link {% if request.endpoint == 'edit_game' %} active {% endif %}" href="{{ url_for('edit_game',game_id=game.id) }}">Edit Game</a>
+                <a class="nav-link {% if request.endpoint == 'edit_game' %} active {% endif %}" href="{{ url_for('edit_game',game_id=game.id) }}">Edit</a>
             </li>
             {% if not game.is_complete %}
             <li class="nav-item">
-                <a class="nav-link {% if request.endpoint == 'randomize_game' %}active{% else %}{% endif %}" href="{{ url_for('randomize_game',game_id=game.id) }}">Randomize Game</a>
+                <a class="nav-link {% if request.endpoint == 'randomize_game' %}active{% else %}{% endif %}" href="{{ url_for('randomize_game',game_id=game.id) }}">Randomize</a>
             </li>
             {% else %}
             {% endif %}
             <li class="nav-item">
-                <a class="nav-link {% if request.endpoint == 'score_game' %} active {% endif %}" href="{{ url_for('score_game',game_id=game.id) }}">Score Game</a>
+                <a class="nav-link {% if request.endpoint == 'score_game' %} active {% endif %}" href="{{ url_for('score_game',game_id=game.id) }}">Score</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-danger" href="{{  url_for('delete_game', game_id = game.id)}}">Delete</a>
