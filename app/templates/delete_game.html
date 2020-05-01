@@ -1,0 +1,14 @@
+{% extends "game_base.html" %}
+{% block content %}
+    {{ super() }}
+    <div class="container">
+        <form action="" method="post"> {{ form.hidden_tag() }}
+                    <div class="form-group">
+                        <label>Game ID:({{ game.id }})</label>
+                        {{ form.confirm_text(** {"class":"form-control","id":"confirmText","placeholder":"Confirm Game ID"}) }}
+                        <small id="confirmHelp" class="form-text text-muted">Input the game id ({{ game.id }}) to confirm delete game.</small>
+                    </div>
+            <p>{{ form.delete(** {"class":"btn btn-danger btn-lg btn-block"}) }}</p>
+        </form>
+    </div>
+{% endblock %}

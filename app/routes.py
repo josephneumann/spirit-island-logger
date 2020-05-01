@@ -17,8 +17,10 @@ from app.forms import (
     RandomizeGameForm,
     SpiritCreateGameForm,
     LoginForm,
+    DeleteGameForm
 )
 import itertools
+from sqlalchemy.sql.functions import func
 
 
 def chunked_iterable(iterable, size):
@@ -53,6 +55,7 @@ def index():
         flash("{}: {}".format(error.capitalize(), form.errors[error][0]), "danger")
 
     return render_template("index.html", title="Spirit Island", games=games, form=form)
+
 
 @app.route("/games")
 @login_required
@@ -144,7 +147,9 @@ def edit_game(game_id):
 
     for error in form.errors:
         flash("{}: {}".format(error.capitalize(), form.errors[error][0]), "danger")
-    return render_template("edit_game.html", title="Spirit Island - Edit Game", game=gm, form=form)
+    return render_template(
+        "edit_game.html", title="Spirit Island - Edit Game", game=gm, form=form
+    )
 
 
 @app.route("/games/<game_id>/score", methods=["GET", "POST"])
@@ -173,15 +178,9 @@ def score_game(game_id):
         return redirect(url_for("edit_game", game_id=gm.id))
     for error in form.errors:
         flash("{}: {}".format(error.capitalize(), form.errors[error][0]), "danger")
-    return render_template("score_game.html", title="Spirit Island - Score Game", game=gm, form=form)
-
-
-@app.route("/games/<game_id>/delete")
-@login_required
-def delete_game(game_id):
-    db.session.delete(Game.query.get_or_404(game_id))
-    db.session.commit()
-    return redirect(url_for("index"))
+    return render_template(
+        "score_game.html", title="Spirit Island - Score Game", game=gm, form=form
+    )
 
 
 @app.route("/games/<game_id>/randomize", methods=["GET", "POST"])
@@ -237,7 +236,9 @@ def spirits():
     spirits = chunked_iterable(
         Spirit.query.order_by(Spirit.name).all(), 3
     )  # This is a generator
-    return render_template("spirits.html", title="Spirit Island - Spirits", chunked_spirits=spirits)
+    return render_template(
+        "spirits.html", title="Spirit Island - Spirits", chunked_spirits=spirits
+    )
 
 
 @app.route("/spirits/<spirit_id>")
@@ -245,7 +246,12 @@ def spirits():
 def spirit(spirit_id):
     spirit = Spirit.query.get_or_404(spirit_id)
     games = spirit.games
-    return render_template("spirit.html", title="Spirit Island - {}".format(spirit.name), spirit=spirit, games=games)
+    return render_template(
+        "spirit.html",
+        title="Spirit Island - {}".format(spirit.name),
+        spirit=spirit,
+        games=games,
+    )
 
 
 @app.route("/spirits/<spirit_id>/create_game", methods=["GET", "POST"])
@@ -270,7 +276,9 @@ def spirit_create_game(spirit_id):
     for error in form.errors:
         flash("{}: {}".format(error.capitalize(), form.errors[error][0]), "danger")
 
-    return render_template("spirit_create_game.html", title="Spirit Island - Create Game", form=form)
+    return render_template(
+        "spirit_create_game.html", title="Spirit Island - Create Game", form=form
+    )
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -293,3 +301,21 @@ def login():
 def logout():
     logout_user()
     return redirect(url_for("login"))
+
+
+@app.route("/games/<game_id>/delete", methods=["GET","POST"])
+@login_required
+def delete_game(game_id):
+    g = Game.query.get_or_404(game_id)
+    form = DeleteGameForm()
+    if form.validate_on_submit():
+        if not form.confirm_text.data == str(g.id):
+            flash("Cofirmation text did not match.", "danger")
+            # return redirect(url_for("delete_game", game_id=game_id))
+        else:
+            db.session.delete(g)
+            db.session.commit()
+            flash ("Game deleted successfully.", "success")
+            return redirect(url_for("index"))
+    return render_template("delete_game.html", game=g, form=form)
+

@@ -234,6 +234,7 @@ class Game(db.Model):
         self.difficulty = 0
         self.handicap = 0
         self.expansions = [Expansion.query.get("base")]
+        self.confirm_text = None
 
         # Handle expansions
         if expansions:

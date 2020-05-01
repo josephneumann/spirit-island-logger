@@ -105,3 +105,8 @@ class LoginForm(FlaskForm):
     password = PasswordField("Password")
     remember_me = BooleanField("Remember Me")
     login = SubmitField("Log In")
+
+
+class DeleteGameForm(FlaskForm):
+    confirm_text = StringField("Confirm Text")
+    delete = SubmitField("Delete")
