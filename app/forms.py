@@ -74,13 +74,13 @@ class EditGameForm(FlaskForm):
 class ScoreGameForm(FlaskForm):
     outcome = SelectField("Outcome")
     invader_cards = IntegerField(
-        "Invader Cards in Deck", validators=[DataRequired(), NumberRange(min=0, max=12)]
+        "Invader Cards in Deck", validators=[NumberRange(min=0, max=12)]
     )
     dahan = IntegerField(
-        "Dahan Left", validators=[DataRequired(), NumberRange(min=0, max=50)]
+        "Dahan Left", validators=[NumberRange(min=0, max=50)]
     )
     blight = IntegerField(
-        "Blight", validators=[DataRequired(), NumberRange(min=0, max=50)]
+        "Blight", validators=[NumberRange(min=0, max=50)]
     )
     score_game = SubmitField("Calculate Score")
 
