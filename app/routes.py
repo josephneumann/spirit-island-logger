@@ -192,6 +192,7 @@ def randomize_game(game_id):
         ("1", "Low"),
         ("2", "Moderate"),
         ("3", "High"),
+        ("4", "Very High"),
     ]
     form.scenario_max_difficulty.choices = [(str(x), x) for x in range(5)]
     form.adversary_max_difficulty.choices = [(str(x), x) for x in range(11)]

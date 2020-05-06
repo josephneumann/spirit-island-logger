@@ -37,7 +37,7 @@ class Spirit(db.Model):
     __tablename__ = "spirit"
     id = db.Column(db.Text, primary_key=True)  # Unique text name for character
     name = db.Column(db.Text)
-    complexity = db.Column(db.Integer)  # 1/2/3 for Low/Moderate/High
+    complexity = db.Column(db.Integer)  # 1/2/3/4 for Low/Moderate/High/Very-High
     setup = db.Column(db.Text)
     offense = db.Column(db.Integer)
     control = db.Column(db.Integer)
@@ -65,6 +65,8 @@ class Spirit(db.Model):
             return "Moderate"
         elif self.complexity == 3:
             return "High"
+        elif self.complexity == 4:
+            return "Very High"
         return "Unknown"
 
     def get_game_wins(self) -> int:
@@ -259,6 +261,7 @@ class Game(db.Model):
             1: Low complexity
             2: Moderate complexity
             3: High complexity
+            4: Very High complexity
 
         :return A list of matching Spirit objects
         """
@@ -281,6 +284,7 @@ class Game(db.Model):
             1: Low complexity
             2: Moderate complexity
             3: High complexity
+            4: Very High complexity
 
         :return None
 
@@ -475,7 +479,7 @@ class Game(db.Model):
 
         :param use_thematic_boards: Bool - Whether to use Thematic boards for game
         :param spirit_max_complexity: Bool - Maximum complexity of spirits to randomly
-            assign.  1: Low, 2: Moderate, 3: High
+            assign.  1: Low, 2: Moderate, 3: High, 4: Very Hihg
         :param scenario_max_difficulty: Int (0-10) - Max difficulty of Scenario to
             randomly select.  If None, no scenario will be selected.
         :param adversary_max_difficulty: Int (1-10) - Max difficulty of Adversary to

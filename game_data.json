@@ -548,13 +548,13 @@
       },
       "finder": {
         "name": "Finder of Paths Unseen",
-        "complexity": 3,
+        "complexity": 4,
         "powers": {
-          "offense": 2,
-          "control": 10,
-          "fear": 2,
-          "defense": 6,
-          "utility": 6
+          "offense": -4,
+          "control": 20,
+          "fear": 1,
+          "defense": 2,
+          "utility": 2
         },
         "setup": "Put 2 Presence on your starting board: 1 in land #3; 1 in the highest-numbered land. Note that you have 6 Unique Power Cards.",
         "color": {
@@ -625,7 +625,7 @@
         "name": "Shifting Memory of Ages",
         "complexity": 2,
         "powers": {
-          "offense": 3,
+          "offense": 2,
           "control": 4,
           "fear": 4,
           "defense": 8,
