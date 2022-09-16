@@ -11,7 +11,7 @@ Flask-WTF==0.14.3
 gunicorn==20.0.4
 itsdangerous==1.1.0
 Jinja2==2.11.2
-Mako==1.1.2
+Mako==1.2.2
 MarkupSafe==1.1.1
 pycparser==2.20
 psycopg2==2.8.5
